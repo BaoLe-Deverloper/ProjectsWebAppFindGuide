@@ -94,12 +94,14 @@
     <Content Include="WebServices\WebServiceAccount.asmx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\HasdMD5.cs" />
     <Compile Include="Models\DataApp.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataApp.dbml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SecurityAuthencationApp\Authenticity.cs" />
     <Compile Include="WebServices\WebServiceAccount.asmx.cs">
       <DependentUpon>WebServiceAccount.asmx</DependentUpon>
       <SubType>Component</SubType>
