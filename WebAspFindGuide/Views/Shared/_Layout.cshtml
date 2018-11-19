@@ -1,0 +1,278 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tìm Hướng Dẫn Viên &mdash;Trang Web Tìm Hướng Dẫn Viên Hàng Đầu Thế Giới</title>
+    <meta name="description" content="Free Bootstrap Theme by uicookies.com">
+    <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+
+    <link rel="stylesheet" href="Assets/css/styles-merged.css">
+    <link rel="stylesheet" href="Assets/css/style.css">
+    <link rel="stylesheet" href="Assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="Assets/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="Assets/fontawesome-free-5.5.0-web/Assets/css/all.css">
+
+
+    <link rel="stylesheet" href="Assets/css/custom.css">
+
+    <!--[if lt IE 9]>
+      <script src="Assets/js/vendor/html5shiv.min.js"></script>
+      <script src="Assets/js/vendor/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+
+    <!-- START: header -->
+
+    <div class="probootstrap-loader"></div>
+
+    <header role="banner" class="probootstrap-header">
+        <div class="container">
+            <a href="index.html" class="probootstrap-logo">Bao_Le<span>.</span></a>
+
+            <a href="#" class="probootstrap-burger-menu visible-xs"><i>Menu</i></a>
+            <div class="mobile-menu-overlay"></div>
+
+            <nav role="navigation" class="probootstrap-nav hidden-xs">
+                <ul class="animated fadeInLeft probootstrap-main-nav">
+                    <li class="active"><a href="index.html">Trang chủ</a></li>
+                    <li><a href="properties.html">Đặt Xe</a></li>
+                    <li><a href="agents.html">Lịch Trình</a></li>
+                    <li><a href="about.html">Thông Tin</a></li>
+                    <li><a id="myBtn-signUp" class="closeMenu">Đăng Kí</a></li>
+                    <li><a id="myBtn-Login" class="closeMenu">Đăng Nhập</a></li>
+                </ul>
+                <div class="extra-text visible-xs">
+                    <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
+                    <h5>Địa Chỉ</h5>
+                    <p>198 West 21th Street, Suite 721 New York NY 10016</p>
+                    <h5>Liên Lạc</h5>
+                    <ul class="social-buttons">
+                        <li><a href="#"><i class="icon-twitter"></i></a></li>
+                        <li><a href="#"><i class="icon-facebook2"></i></a></li>
+                        <li><a href="#"><i class="icon-instagram2"></i></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- Đăng nhập -->
+        <div>
+            <div id="myModal-Login" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h2>Đăng Nhập</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-8 form-horizontal my-container">
+                                <form>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" for="email">Email:</label>
+                                        <div class="col-sm-10">
+                                            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" for="pwd">PassWord:</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox"> Nhớ tài khoản</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-success">Đăng Nhập</button>
+
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-4">
+                                <h4 style="text-align: center;">Đăng Nhập Với</h4>
+                                <a class="btn btn-block loginBtn-facebook">
+                                    <span class="fab fa-facebook-f"></span>
+                                    Login with Facebook
+                                </a>
+                                <a class="btn btn-block loginBtn-google">
+                                    <i class="fab fa-google-plus-g"></i>
+                                    Login with Google
+                                </a>
+                                <a class="btn btn-block btn-vk ">
+                                    <span class="fab fa-vk"></span> Sign in with Vk
+                                    <a class="btn btn-block btn-wechat">
+                                        <span class="fab fa-weixin"></span> Sign in with Wechat
+                                    </a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <p class="mb0 text-left"><small> Tìm Kiếm Hướng Dẫn Viên Miễn Phí    <a class="float-right" href="#"> Đăng kí làm hướng dẫn viên </a></small>  </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Đăng Kí -->
+            <div>
+                <div id="myModal-signUp" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span class="close">&times;</span>
+                            <h2>Đăng Kí</h2>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-8 form-horizontal my-container">
+                                    <form>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="email">Email:</label>
+                                            <div class="col-sm-10">
+                                                <input type="email" class="form-control" id="email" placeholder="Enter email">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="pwd">PassWord:</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="cfpwd">ConfigPass:</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" class="form-control" id="cfpwd" placeholder="Config password">
+                                            </div>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox"> Nhớ tài khoản</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-success">Đăng Nhập</button>
+
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-4">
+                                    <h4 style="text-align: center;">Đăng Kí Với</h4>
+                                    <a class="btn btn-block loginBtn-facebook">
+                                        <span class="fab fa-facebook-f"></span>
+                                        Login with Facebook
+                                    </a>
+                                    <a class="btn btn-block loginBtn-google">
+                                        <i class="fab fa-google-plus-g"></i>
+                                        Login with Google
+                                    </a>
+                                    <a class="btn btn-block btn-vk ">
+                                        <span class="fab fa-vk"></span> Sign in with Vk
+                                        <a class="btn btn-block btn-wechat">
+                                            <span class="fab fa-weixin"></span> Sign in with Wechat
+                                        </a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <p class="mb0 text-left"><small> Tìm Kiếm Hướng Dẫn Viên Miễn Phí    <a class="float-right" href="#"> Đăng kí làm hướng dẫn viên </a></small>  </p>
+                        </div>
+                    </div>
+                </div>
+
+    </header>
+
+
+    <!-- END: header -->
+    @RenderBody()
+    <footer class="probootstrap-footer probootstrap-bg" style="background-image: url(Assets/img/slider_3.jpg)">
+        <div class="container">
+            <div class="row mb60">
+                <div class="col-md-3">
+                    <div class="probootstrap-footer-widget">
+                        <h4 class="heading">About Haus.</h4>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+                        <p><a href="#">Read more...</a></p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="probootstrap-footer-widget probootstrap-link-wrap">
+                        <h4 class="heading">Quick Links</h4>
+                        <ul class="stack-link">
+                            <li><a href="#">Property Listing</a></li>
+                            <li><a href="#">Rent Properties</a></li>
+                            <li><a href="#">Sell Properties</a></li>
+                            <li><a href="#">Agents</a></li>
+                            <li><a href="#">Testimonial</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="probootstrap-footer-widget">
+                        <h4 class="heading">Popular Cities</h4>
+                        <ul class="stack-link">
+                            <li><a href="#">New York <small>(320 properties)</small></a></li>
+                            <li><a href="#">San Francisco <small>(294 properties)</small></a></li>
+                            <li><a href="#">Brooklyn <small>(300 properties)</small></a></li>
+                            <li><a href="#">Chicago <small>(268 properties)</small></a></li>
+                            <li><a href="#">Los Angeles <small>(342 properties)</small></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="probootstrap-footer-widget probootstrap-link-wrap">
+                        <h4 class="heading">Subscribe</h4>
+                        <p>Far far away behind the word mountains far from.</p>
+                        <form action="#">
+                            <div class="form-field">
+                                <input type="text" class="form-control" placeholder="Enter your email">
+                                <button class="btn btn-subscribe">Send</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row copyright">
+                <div class="col-md-6">
+                    <div class="probootstrap-footer-widget">
+                        <p>&copy; 2017 <a href="https://uicookies.com/">uiCookies:Haus</a>. Designed by <a href="https://uicookies.com/">uicookies.com</a> <br> Demo Photos from <a href="https://pixabay.com/">Pixabay</a> &amp; <a href="https://unsplash.com/">Unsplash</a></p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="probootstrap-footer-widget right">
+                        <ul class="probootstrap-footer-social">
+                            <li><a href="#"><i class="icon-twitter"></i></a></li>
+                            <li><a href="#"><i class="icon-facebook"></i></a></li>
+                            <li><a href="#"><i class="icon-instagram2"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="gototop js-top">
+        <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
+    </div>
+
+
+
+    <script src="Assets/js/scripts.min.js"></script>
+
+    <script src="Assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="Assets/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+    <script src="Assets/js/main.js"></script>
+    <script src="Assets/js/custom.js"></script>
+
+
+</body>
+</html>
