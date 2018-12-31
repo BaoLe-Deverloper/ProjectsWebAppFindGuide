@@ -11,7 +11,8 @@ namespace WebAspFindGuide.Models
     {
         public int BankCardID { get; set; }
 
-        public int? BankCard_AccountID { get; set; }
+        [StringLength(50)]
+        public string BankCard_AccountID { get; set; }
 
         [StringLength(20)]
         public string BankCard_Number { get; set; }

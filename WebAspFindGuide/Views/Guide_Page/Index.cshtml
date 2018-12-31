@@ -1,0 +1,514 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section my_css{
+
+    <link href="~/Assets/css/plugins/fullcalendar.min.css" rel="stylesheet" />
+
+}
+
+@section my_script{
+    <script src="~/Assets/js/plugins/fullcalendar.min.js"></script>
+
+    <script>
+        (function (jQuery) {
+            $('.calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month'
+                },
+                lang: 'vi',
+                defaultDate: '2015-03-12',
+                businessHours: true, // display business hours
+                editable: true,
+                events: [
+
+                    // red areas where no events can be dropped
+                    {
+                        start: '2015-03-24',
+                        end: '2015-03-25',
+                        overlap: false,
+                        rendering: 'background',
+                        color: '#FF6656'
+                    },
+                    {
+                        start: '2015-03-06',
+                        end: '2015-03-08',
+                        overlap: true,
+                        rendering: 'background',
+                        color: '#1db920'
+                    },
+                    {
+                        start: '2015-03-10',
+                        end: '2015-03-11',
+                        overlap: true,
+                        rendering: 'background',
+                        color: '#1db920'
+                    },
+                    {
+                        start: '2015-03-26',
+                        end: '2015-03-29',
+                        overlap: true,
+                        rendering: 'background',
+                        color: '#1db920'
+                    }
+                ]
+            });
+        })(jQuery);
+    </script>
+    <script src="~/Assets/js/plugins/wow.min.js"></script>
+    s
+    <script>new WOW().init();</script>
+    <script>
+        $(document).ready(function () {
+            var $dragging = null;
+
+            $(document.body).on("mousemove", function (e) {
+                if ($dragging) {
+                    $dragging.offset({
+                        top: e.pageY - 100,
+                        left: e.pageX - 100
+                    });
+                }
+            });
+
+            $(document.body).on("mousedown", ".unselectable", function (e) {
+                $dragging = $(".unselectable");
+            });
+
+            $(document.body).on("mouseup", function (e) {
+                $dragging = null;
+            });
+        });
+    </script>
+
+}
+<div style="position: fixed; display: block; z-index: 12; margin-left:-40px; margin-top:-20px;" class="unselectable animated bounceInDown">
+    <a ondblclick="myFunction()" class="float-right pps-btn-img" title="Đặt Ngay chuyến đi với hdv này">
+        <div class="phonering-alo-phone phonering-alo-green phonering-alo-show " id="phonering-alo-phoneIcon">
+            <div class="phonering-alo-ph-circle"></div>
+            <div class="phonering-alo-ph-circle-fill"></div>
+
+            <div class="phonering-alo-ph-img-circle"><p>Đặt Chuyến</p></div>
+        </div>
+    </a>
+</div>
+<section class="probootstrap-slider flexslider2 page-inner">
+
+    <div class="overlay">
+        <div class="probootstrap-wrap-banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
+                        <div class="my_info_Avata probootstrap-animated fadeInDown ">
+                            <div class="image_outer_container">
+                                <div class="green_icon"></div>
+                                <div class="Avarta">
+
+                                    <img src="/Assets/img/Avatar_user.png" class="img-circle" alt="Cinque Terre">
+                                </div>
+
+                            </div>
+
+                            <p class="p-User">Baole<span class="top-badge"><strong> 1000</strong> Điểm</span></p>
+                            <div style="text-align:center;">
+                                <div class="stars">
+                                    <form action="">
+                                        <input class="star star-5" id="star-5" type="radio" name="star" />
+                                        <label class="star star-5" for="star-5"></label>
+                                        <input checked="true" class="star star-4" id="star-4" type="radio" name="star" />
+                                        <label class="star star-4" for="star-4"></label>
+                                        <input class="star star-3" id="star-3" type="radio" name="star" />
+                                        <label class="star star-3" for="star-3"></label>
+                                        <input class="star star-2" id="star-2" type="radio" name="star" />
+                                        <label class="star star-2" for="star-2"></label>
+                                        <input class="star star-1" id="star-1" type="radio" name="star" />
+                                        <label class="star star-1" for="star-1"></label>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 ">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="slides">
+        <li style="background-image: url(/Assets/img/Moscow-1.jpg);"></li>
+        <li style="background-image: url(/Assets/img/Moscow-2.jpg);"></li>
+        <li style="background-image: url(/Assets/img/saint_peterburg-1.jpg);"></li>
+    </ul>
+
+</section>
+
+
+<!--  phần thân -->
+<div class="my_info ">
+    <div class="row">
+        <div class="row_1 col-lg-4 wow bounceInLeft">
+            <div>
+
+                <h4><i class="far fa-address-card my_icon"></i>Thông Tin Tài Khoản</h4>
+                <div class="info_1" style="text-align: left;">
+                    <label><i class="icon-home  my_icon"></i>Quê Quán: Hai Bà Trưng - Hà Nội.</label>
+                    <label><i class="icon-graduation-cap my_icon"></i>Học tại: Ở đại học quốc gia hà nội.</label>
+                    <label><i class="icon-bubble my_icon"></i>Làm việc: Ở đại học quốc gia hà nội.</label>
+                    <label><i class="icon-language my_icon"></i>Thông thạo: Tiếng Nga, Tiếng Việt, Tiếng Anh </label>
+                    <label><i class="icon-camera my_icon"></i>Biết Chụp ảnh, Guitar,Kiếu hài hước</label>
+                </div>
+                <div class="img_info">
+                    <div class="row probootstrap-gutter10">
+                        <div class="col-md-12 col-sm-12">
+                            <a href="#" class="probootstrap-hover-overlay">
+                                <img src="~/Assets/img/saint_peterburg-5.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+                                <div class="probootstrap-text-overlay">
+                                    <h3><i class="fas fa-images my_icon"></i> Xem Album ảnh</h3>
+                                    <p>430 ảnh</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="background-color: #ddd7d7">
+                <div class="text-center" style="background-color: #333;"><h3 style="color: white;">Tin mới</h3> </div>
+                <div>
+                    <div class="col-sm-12">
+                        <div class="panel panel-white post panel-shadow">
+                            <div class="post-heading">
+                                <div class="pull-left image">
+                                    <img src="/img/quang-truong-do.jpg" class=" avatar" alt="user profile image">
+                                </div>
+                                <div class="pull-left meta">
+
+                                    <div class="title h5">
+                                        <b>Quảng Trường Đỏ</b>
+
+                                    </div>
+                                    <h6 class="text-muted time">1 minute ago</h6>
+                                </div>
+                            </div>
+                            <div class="post-description">
+                                <p>Quảng trường Đỏ được mệnh danh là trái tim của thành phố Moscow....</p>
+                                <div class="stats">
+                                    <a href="#" class="btn btn-default stat-item">
+                                        Xem chi tiết
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div> <div class="col-sm-12">
+                        <div class="panel panel-white post panel-shadow">
+                            <div class="post-heading">
+                                <div class="pull-left image">
+                                    <img src="~/Assets/img/quang-truong-do.jpg" class=" avatar" alt="user profile image">
+                                </div>
+                                <div class="pull-left meta">
+
+                                    <div class="title h5">
+                                        <b>Quảng Trường Đỏ</b>
+
+                                    </div>
+                                    <h6 class="text-muted time">1 minute ago</h6>
+                                </div>
+                            </div>
+                            <div class="post-description">
+                                <p>Quảng trường Đỏ được mệnh danh là trái tim của thành phố Moscow....</p>
+                                <div class="stats">
+                                    <a href="#" class="btn btn-default stat-item">
+                                        Xem chi tiết
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div> <div class="col-sm-12">
+                        <div class="panel panel-white post panel-shadow">
+                            <div class="post-heading">
+                                <div class="pull-left image">
+                                    <img src="~/Assets/img/quang-truong-do.jpg" class=" avatar" alt="user profile image">
+                                </div>
+                                <div class="pull-left meta">
+
+                                    <div class="title h5">
+                                        <b>Quảng Trường Đỏ</b>
+
+                                    </div>
+                                    <h6 class="text-muted time">1 minute ago</h6>
+                                </div>
+                            </div>
+                            <div class="post-description">
+                                <p>Quảng trường Đỏ được mệnh danh là trái tim của thành phố Moscow....</p>
+                                <div class="stats">
+                                    <a href="#" class="btn btn-default stat-item">
+                                        Xem chi tiết
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="panel panel-white post panel-shadow">
+                            <div class="post-heading">
+                                <div class="pull-left image">
+                                    <img src="/Assets/img/quang-truong-do.jpg" class=" avatar" alt="user profile image">
+                                </div>
+                                <div class="pull-left meta">
+
+                                    <div class="title h5">
+                                        <b>Quảng Trường Đỏ</b>
+
+                                    </div>
+                                    <h6 class="text-muted time">1 minute ago</h6>
+                                </div>
+                            </div>
+                            <div class="post-description">
+                                <p>Quảng trường Đỏ được mệnh danh là trái tim của thành phố Moscow....</p>
+                                <div class="stats">
+                                    <a href="#" class="btn btn-default stat-item">
+                                        Xem chi tiết
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right_box col-lg-8 wow bounceInRight">
+            <div style=" text-align: center;">
+                <h3>Thông Tin Lịch Trình</h3>
+                <div>
+                    <div class="container mt-5 mb-5">
+                        <div class="row">
+                            <div class="lichtrinh offset-md-3">
+                                <ul class="timeline">
+                                    <li>
+                                        <a target="_blank" href="#">Quảng trường Đỏ</a>
+                                        <a href="#" class="float-right a-time">9h30-10h30</a>
+                                        <p>Quảng trường Đỏ được mệnh danh là trái tim của thành phố Moscwa. Nơi đây tập trung những công trình huyền thoaih gắn với lịch sử nước Nga. Do đó, địa danh này đã được UNESCO công nhận là di sản thế giới.</p>
+                                        <div class="img_lichtrinh">
+                                            <div class="row probootstrap-gutter10">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <a href="#" class="probootstrap-hover-overlay">
+                                                        <img src="~/Assets/img/quang-truong-do.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+                                                        <div class="probootstrap-text-overlay">
+                                                            <p>430 ảnh</p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#">Phố cổ Arbart</a>
+                                        <a href="#" class="float-right a-time">10h30-12h</a>
+                                        <p>Nếu Quảng trường Đỏ là trái tim của Moscow thì phố cổ Arbart chính là tâm hồn của thành phố. Từ thế kỷ 16, Arbat là nơi sinh sống của những người thợ thủ công, thợ rèn chuyên phục vụ cho giới quý tộc trong điện Kremlin....</p>
+                                        <div style="width: 80%;" class="img_lichtrinh">
+                                            <div class="row probootstrap-gutter10">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <a href="#" class="probootstrap-hover-overlay">
+                                                        <img src="/Assets/img/pho-co-arbart.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+                                                        <div class="probootstrap-text-overlay">
+                                                            <p>1 ảnh</p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#">Công viên Kolomen </a>
+                                        <a href="#" class="float-right a-time">12h30-3h</a>
+                                        <p>Tọa lạc trên điền trang nghỉ dưỡng của Hoàng gia Nga xưa kia, Kolomen là công viên có cảnh sắc tựa tranh vẽ. Dưới thời trị vì của Sa hoàng Alekxei Mikhailovich, khu điền trang này bước vào thời kỳ hoàng kim với cung điện gỗ có vẻ đẹp phi thường. ..</p>
+                                        <div class="img_lichtrinh">
+                                            <div class="row probootstrap-gutter10">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <a href="#" class="probootstrap-hover-overlay">
+                                                        <img src="~/Assets/img/Kolomen-park.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+                                                        <div class="probootstrap-text-overlay">
+                                                            <p>430 ảnh</p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="my_info wow bounceInDown">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h2 class="text-center">Lịch Làm Việc</h2>
+                            </div>
+                            <div style="overflow: scroll;" class="panel-body padding-0">
+
+                                <div class="calendar">
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ">
+        <div class="panel panel-default wow bounceInDown" data-wow-duration="1s">
+            <div class="panel-heading">
+                <h2 class=" text-center">Đánh Giá Từ Khách</h2>
+            </div>
+            <div class="panel-body">
+
+
+                <div class="col-sm-12">
+                    <div class="panel panel-white post panel-shadow">
+                        <div class="post-heading">
+                            <div class="pull-left image">
+                                <img src="/Assets/img/Moscow-1.jpg" class="img-circle avatar" alt="user profile image">
+                            </div>
+                            <div class="pull-left meta">
+                                <div class="title h5">
+                                    <a href="#"><b>Ryan Haywood</b></a>
+                                    made a post.
+                                </div>
+                                <h6 class="text-muted time">1 minute ago</h6>
+                            </div>
+                        </div>
+                        <div class="post-description">
+                            <p>Chúng tôi đánh giá cao về khả năng nói và diễn đạt trong lời nói, tôi rất hài lòng về anh.</p>
+                            <div class="stats">
+                                <a href="#" class="btn btn-default stat-item">
+                                    <i class="icon-thumbs-up icon"></i>122
+                                </a>
+                                <a href="#" class="btn btn-default stat-item">
+                                    <i class="icon-thumbs-down icon"></i>1
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="panel panel-white post panel-shadow">
+                        <div class="post-heading">
+                            <div class="pull-left image">
+                                <img src="/Assets/img/HDV1.jpg" class="img-circle avatar" alt="user profile image">
+                            </div>
+                            <div class="pull-left meta">
+                                <div class="title h5">
+                                    <a href="#"><b>Ryan Haywood</b></a>
+                                    made a post.
+                                </div>
+                                <h6 class="text-muted time">1 minute ago</h6>
+                            </div>
+                        </div>
+                        <div class="post-description">
+                            <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
+                            <div class="stats">
+                                <a href="#" class="btn btn-default stat-item">
+                                    <i class="icon-thumbs-up icon"></i>2123
+                                </a>
+                                <a href="#" class="btn btn-default stat-item">
+                                    <i class="icon-thumbs-down icon"></i>12
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 well">
+                    <h4><i class="fas fa-comment-alt my_icon"></i>Đánh Giá Của Bạn:</h4>
+                    <form role="form">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="submit" name="say" value="" class="btn btn-primary float-right"><i class="icon-reply"></i> Submit</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<section class="probootstrap-section">
+    <div class="container wow bounceInDown" data-wow-duration="1s">
+        <div class="row heading">
+            <h2 class="mt0 mb50 text-center">Hướng Dẫn Viên</h2>
+        </div>
+        <div class="row probootstrap-gutter10">
+            <div class="col-md-6 col-sm-6">
+                <a href="#" class="probootstrap-hover-overlay">
+                    <img src="/Assets/img/saint_peterburg-1.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+                    <div class="probootstrap-text-overlay">
+                        <h3>Saint Peterburg</h3>
+                        <p>430 Hướng Dẫn Viên</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <a href="#" class="probootstrap-hover-overlay">
+                    <img src="/Assets/img/saint_peterburg-5.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+                    <div class="probootstrap-text-overlay">
+                        <h3>Saint Peterburg</h3>
+                        <p>430 Hướng Dẫn Viên</p>
+                    </div>
+                </a>
+            </div>
+            <div class="clearfix visible-sm-block"></div>
+
+            <div class="col-md-4 col-sm-6">
+                <a href="#" class="probootstrap-hover-overlay">
+                    <img src="/Assets/img/Moscow-1.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+                    <div class="probootstrap-text-overlay">
+                        <h3>Saint Peterburg</h3>
+                        <p>430 Hướng Dẫn Viên</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="#" class="probootstrap-hover-overlay">
+                    <img src="/Assets/img/Moscow-1.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+                    <div class="probootstrap-text-overlay">
+                        <h3>Saint Peterburg</h3>
+                        <p>430 Hướng Dẫn Viên</p>
+                    </div>
+                </a>
+            </div>
+            <div class="clearfix visible-sm-block"></div>
+            <div class="col-md-4 col-sm-6">
+                <a href="#" class="probootstrap-hover-overlay">
+                    <img src="/Assets/img/Moscow-3.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+                    <div class="probootstrap-text-overlay">
+                        <h3>Saint Peterburg</h3>
+                        <p>430 Hướng Dẫn Viên</p>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+

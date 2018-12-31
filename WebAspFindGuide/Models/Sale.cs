@@ -9,7 +9,7 @@ namespace WebAspFindGuide.Models
     [Table("Sale")]
     public partial class Sale
     {
-      
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sale()
         {
             Billing_App = new HashSet<Billing_App>();
@@ -22,7 +22,8 @@ namespace WebAspFindGuide.Models
         public int? Sale_Percent { get; set; }
 
         public bool Sale_Status { get; set; }
-        
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Billing_App> Billing_App { get; set; }
     }
 }

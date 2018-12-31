@@ -18,7 +18,8 @@ namespace WebAspFindGuide.Models
             Languages = new HashSet<Language>();
         }
 
-        public int AccountID { get; set; }
+        [StringLength(50)]
+        public string AccountID { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -35,7 +36,7 @@ namespace WebAspFindGuide.Models
         [StringLength(50)]
         public string Account_Facebook { get; set; }
 
-        public int Account_RoleID { get; set; }
+        public int? Account_RoleID { get; set; }
 
         public bool? Account_Gender { get; set; }
 
@@ -64,6 +65,12 @@ namespace WebAspFindGuide.Models
         public bool? Account_Lock { get; set; }
 
         public int? Account_Area { get; set; }
+
+        [StringLength(200)]
+        public string Account_CodeConfig { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? Account_CreateDate { get; set; }
 
         public virtual Area Area { get; set; }
 

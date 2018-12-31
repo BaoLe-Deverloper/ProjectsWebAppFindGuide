@@ -1,45 +1,34 @@
 
 
-$(function() {
+/////Model cho phần Đăng Nhập Đăng Kí///
+//$('.close').on('click', function(event) {
+//  event.preventDefault();
+//   $('#myModal-signUp').css('display','none');
+//   $('#myModal-Login').css('display','none');
+// });
 
-  $('.form_datetime').datetimepicker({
-       format: "dd/mm/yyyy - hh:ii",
-        autoclose: true,
-        todayBtn: true,
-        pickerPosition: "button-right",
-        minuteStep: 30,
-        hourStep: 2
-
-  });
-});
-
-///Model cho phần Đăng Nhập Đăng Kí///
-$('.close').on('click', function(event) {
-  event.preventDefault();
-   $('#myModal-signUp').css('display','none');
-   $('#myModal-Login').css('display','none');
- });
-
-$(window).click(function(event) {
-    if ($(event.target).is('#myModal-Login')) {
+//$(window).click(function(event) {
+//    if ($(event.target).is('#myModal-Login')) {
         
-         $('#myModal-Login').css('display','none');
-    }
-  if ($(event.target).is('#myModal-signUp')) {
-         $('#myModal-signUp').css('display','none'); 
-    }
-});
+//         $('#myModal-Login').css('display','none');
+//    }
+//  if ($(event.target).is('#myModal-signUp')) {
+//         $('#myModal-signUp').css('display','none'); 
+//    }
+//});
+
+//////**********************////
 
 
-$('#myBtn-signUp').on('click', function() {
-  event.preventDefault();
-   $('#myModal-signUp').css('display','block');
-});
+//$('#myBtn-signUp').on('click', function (event) {
+//  event.preventDefault();
+//   $('#myModal-signUp').css('display','block');
+//});
 
-$('#myBtn-Login').on('click', function() {
-  event.preventDefault();
-     $('#myModal-Login').css('display','block');
-});
+//$('#myBtn-Login').on('click', function (event) {
+//  event.preventDefault();
+//     $('#myModal-Login').css('display','block');
+//});
 ///////hết////////
 $(function () {
     //Initialize tooltips

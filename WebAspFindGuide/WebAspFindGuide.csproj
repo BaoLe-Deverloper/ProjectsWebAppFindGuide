@@ -19,9 +19,9 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
+    <IISExpressSSLPort>44317</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
@@ -59,6 +59,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
@@ -68,6 +71,12 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -151,7 +160,17 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Common\Const.cs" />
+    <Compile Include="Common\HashMD5.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Guide_RegistrationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Guide_PageController.cs" />
+    <Compile Include="Controllers\Page_ErrorsController.cs" />
+    <Compile Include="Controllers\Personal_PageController.cs" />
+    <Compile Include="Controllers\WebApi\AccountController.cs" />
+    <Compile Include="CustomAuthencation\CustomAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -164,31 +183,38 @@
     <Compile Include="Models\OrderTour.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Sale.cs" />
+    <Compile Include="Models\Site_Model\CustomAccount.cs" />
+    <Compile Include="Models\Site_Model\Account_Model.cs" />
+    <Compile Include="Models\Site_Model\Guide_Model.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\WebData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Web References\WebServiceAccount\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\css\bootstrap-datetimepicker.min.css" />
     <Content Include="Assets\css\custom.css" />
     <Content Include="Assets\css\default-skin\default-skin.css" />
     <Content Include="Assets\css\default-skin\default-skin.png" />
     <Content Include="Assets\css\default-skin\default-skin.svg" />
     <Content Include="Assets\css\default-skin\preloader.gif" />
+    <Content Include="Assets\css\intlTelInput.min.css" />
+    <Content Include="Assets\css\Login.css" />
+    <Content Include="Assets\css\Page_not_found400.css" />
+    <Content Include="Assets\css\plugins\animate.css" />
+    <Content Include="Assets\css\plugins\bootstrap-material-datetimepicker.css" />
+    <Content Include="Assets\css\plugins\fullcalendar.min.css" />
+    <Content Include="Assets\css\plugins\Timeline.css" />
     <Content Include="Assets\css\style.css" />
     <Content Include="Assets\css\styles-merged.css" />
     <Content Include="Assets\css\vendor\animate.css" />
     <Content Include="Assets\css\vendor\bootstrap.min.css" />
     <Content Include="Assets\css\vendor\default-skin.css" />
     <Content Include="Assets\css\vendor\flexslider.css" />
+    <Content Include="Assets\css\vendor\font-awesome.min.css" />
     <Content Include="Assets\css\vendor\icomoon.css" />
     <Content Include="Assets\css\vendor\magnific-popup.css" />
     <Content Include="Assets\css\vendor\owl.carousel.min.css" />
@@ -219,6 +245,10 @@
     <Content Include="Assets\fonts\icomoon demo\style.css" />
     <Content Include="Assets\fonts\icomoon\icomoon.svg" />
     <Content Include="Assets\img\avarta1.jpg" />
+    <Content Include="Assets\img\Avatar_user.png" />
+    <Content Include="Assets\img\backgroudLogin.jpg" />
+    <Content Include="Assets\img\flags%402x.png" />
+    <Content Include="Assets\img\flags.png" />
     <Content Include="Assets\img\flaticon\backup.txt" />
     <Content Include="Assets\img\flaticon\svg\001-prize.svg" />
     <Content Include="Assets\img\flaticon\svg\002-camera.svg" />
@@ -226,8 +256,10 @@
     <Content Include="Assets\img\flaticon\svg\004-house.svg" />
     <Content Include="Assets\img\flaticon\svg\005-new.svg" />
     <Content Include="Assets\img\flaticon\svg\006-coin.svg" />
+    <Content Include="Assets\img\Google_Translate_Icon.png" />
     <Content Include="Assets\img\HDV1.jpg" />
     <Content Include="Assets\img\Kolomen-park.jpg" />
+    <Content Include="Assets\img\Lights.mp4" />
     <Content Include="Assets\img\loc.png" />
     <Content Include="Assets\img\Moscow-1.jpg" />
     <Content Include="Assets\img\Moscow-2.jpg" />
@@ -254,9 +286,20 @@
     <Content Include="Assets\js\bootstrap.min.js" />
     <Content Include="Assets\js\custom.js" />
     <Content Include="Assets\js\google-map.js" />
+    <Content Include="Assets\js\intlTelInput-jquery.js" />
+    <Content Include="Assets\js\jquery.min.js" />
+    <Content Include="Assets\css\jquery.timepicker.css" />
+    <Content Include="Assets\js\jquery.timepicker.js" />
+    <Content Include="Assets\js\jquery.ui.min.js" />
     <Content Include="Assets\js\main.js" />
+    <Content Include="Assets\js\plugins\bootstrap-material-datetimepicker.js" />
+    <Content Include="Assets\js\plugins\fullcalendar.min.js" />
+    <Content Include="Assets\js\plugins\moment.min.js" />
+    <Content Include="Assets\js\plugins\timeLine.js" />
+    <Content Include="Assets\js\plugins\wow.min.js" />
     <Content Include="Assets\js\popper.min.js" />
     <Content Include="Assets\js\scripts.min.js" />
+    <Content Include="Assets\js\utils.js" />
     <Content Include="Assets\js\vendor\bootstrap.min.js" />
     <Content Include="Assets\js\vendor\circle-progress.min.js" />
     <Content Include="Assets\js\vendor\html5shiv.min.js" />
@@ -271,6 +314,7 @@
     <Content Include="Assets\js\vendor\jquery.waypoints.min.js" />
     <Content Include="Assets\js\vendor\owl.carousel.min.js" />
     <Content Include="Assets\js\vendor\respond.min.js" />
+    <Content Include="Assets\css\plugins\_media.scss" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
@@ -308,7 +352,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -317,38 +363,24 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Web References\WebServiceAccount\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
     <Content Include="Views\Home\Index.cshtml" />
-    <None Include="Web References\WebServiceAccount\WebServiceAccount.wsdl" />
+    <Content Include="Views\Guide_Page\Index.cshtml" />
+    <Content Include="Views\Guide_Registration\Index.cshtml" />
+    <Content Include="Views\Page_Errors\Page_Error_400.cshtml" />
+    <Content Include="Views\Page_Errors\Page_Error_NotRole.cshtml" />
+    <Content Include="Views\Account\LogIn.cshtml" />
+    <Content Include="Views\Account\SignUp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin_Page\" />
+    <Folder Include="Views\Personal_Page\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferences Include="Web References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:52244/WebServices/WebServiceAccount.asmx%3fWSDL">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\WebServiceAccount\</RelPath>
-      <UpdateFromURL>http://localhost:52244/WebServices/WebServiceAccount.asmx%3fWSDL</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>WebAspFindGuide_WebServiceAccount_WebService</CachedSettingsPropName>
-    </WebReferenceUrl>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

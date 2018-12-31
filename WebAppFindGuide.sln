@@ -3,12 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebServicesFindGuide", "WebAppFindGuide\WebServicesFindGuide.csproj", "{8114B6EA-9324-42F5-8FC8-F42CA2255053}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAspFindGuide", "WebAspFindGuide\WebAspFindGuide.csproj", "{9D639BE7-065E-4B1B-9304-CB3E62C43BFA}"
-	ProjectSection(ProjectDependencies) = postProject
-		{8114B6EA-9324-42F5-8FC8-F42CA2255053} = {8114B6EA-9324-42F5-8FC8-F42CA2255053}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8114B6EA-9324-42F5-8FC8-F42CA2255053}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8114B6EA-9324-42F5-8FC8-F42CA2255053}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8114B6EA-9324-42F5-8FC8-F42CA2255053}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{8114B6EA-9324-42F5-8FC8-F42CA2255053}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{9D639BE7-065E-4B1B-9304-CB3E62C43BFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9D639BE7-065E-4B1B-9304-CB3E62C43BFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D639BE7-065E-4B1B-9304-CB3E62C43BFA}.Release|Any CPU.ActiveCfg = Debug|Any CPU
