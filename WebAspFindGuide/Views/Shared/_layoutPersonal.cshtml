@@ -1,0 +1,264 @@
+﻿
+@{
+    ViewBag.Title = "_layoutPersonal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using WebAspFindGuide.Helpers
+@section my_css{
+
+    <link href="~/Assets/css/plugins/fullcalendar.min.css" rel="stylesheet" />
+
+}
+
+@section my_script{
+    <script src="~/Assets/js/plugins/fullcalendar.min.js"></script>
+
+    <script>
+        (function (jQuery) {
+            $('.calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month'
+                },
+                lang: 'vi',
+                defaultDate: '2015-03-12',
+                businessHours: true, // display business hours
+                editable: true,
+                events: [
+
+                    // red areas where no events can be dropped
+                    {
+                        start: '2015-03-24',
+                        end: '2015-03-25',
+                        overlap: false,
+                        rendering: 'background',
+                        color: '#FF6656'
+                    },
+                    {
+                        start: '2015-03-06',
+                        end: '2015-03-08',
+                        overlap: true,
+                        rendering: 'background',
+                        color: '#1db920'
+                    },
+                    {
+                        start: '2015-03-10',
+                        end: '2015-03-11',
+                        overlap: true,
+                        rendering: 'background',
+                        color: '#1db920'
+                    },
+                    {
+                        start: '2015-03-26',
+                        end: '2015-03-29',
+                        overlap: true,
+                        rendering: 'background',
+                        color: '#1db920'
+                    }
+                ]
+            });
+        })(jQuery);
+    </script>
+    <script src="~/Assets/js/plugins/wow.min.js"></script>
+    s
+    <script>new WOW().init();</script>
+    <script>
+        $(document).ready(function () {
+            var $dragging = null;
+
+            $(document.body).on("mousemove", function (e) {
+                if ($dragging) {
+                    $dragging.offset({
+                        top: e.pageY - 100,
+                        left: e.pageX - 100
+                    });
+                }
+            });
+
+            $(document.body).on("mousedown", ".unselectable", function (e) {
+                $dragging = $(".unselectable");
+            });
+
+            $(document.body).on("mouseup", function (e) {
+                $dragging = null;
+            });
+        });
+    </script>
+
+}
+<div style="position: fixed; display: block; z-index: 12; margin-left:-40px; margin-top:-20px;" class="unselectable animated bounceInDown">
+    <a ondblclick="myFunction()" class="float-right pps-btn-img" title="Đặt Ngay chuyến đi với hdv này">
+        <div class="phonering-alo-phone phonering-alo-green phonering-alo-show " id="phonering-alo-phoneIcon">
+            <div class="phonering-alo-ph-circle"></div>
+            <div class="phonering-alo-ph-circle-fill"></div>
+
+            <div class="phonering-alo-ph-img-circle"><p>Đặt Chuyến</p></div>
+        </div>
+    </a>
+</div>
+<section class="probootstrap-slider flexslider2 page-inner">
+
+    <div class="overlay">
+        <div class="probootstrap-wrap-banner">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="col-sm-4 col-lg-4 col-md-4 col-xs-12 col-sm-offset-4 col-md-offset-4 col-lg-offset-4">
+                        <div class="my_info_Avata probootstrap-animated fadeInDown ">
+                            <div class="image_outer_container">
+                                <div class="green_icon"></div>
+                                <div class="Avarta">
+
+                                    <img src="/Assets/img/Avatar_user.png" class="img-circle" alt="Cinque Terre">
+                                </div>
+
+                            </div>
+
+                            <p class="p-User">Baole<span class="top-badge" style="margin-left:5px;"><strong> 1000</strong> Điểm</span></p>
+                            <div style="text-align:center;">
+                                <div class="stars">
+                                    <form action="">
+                                        <input class="star star-5" id="star-5" type="radio" name="star" />
+                                        <label class="star star-5" for="star-5"></label>
+                                        <input checked="true" class="star star-4" id="star-4" type="radio" name="star" />
+                                        <label class="star star-4" for="star-4"></label>
+                                        <input class="star star-3" id="star-3" type="radio" name="star" />
+                                        <label class="star star-3" for="star-3"></label>
+                                        <input class="star star-2" id="star-2" type="radio" name="star" />
+                                        <label class="star star-2" for="star-2"></label>
+                                        <input class="star star-1" id="star-1" type="radio" name="star" />
+                                        <label class="star star-1" for="star-1"></label>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="slides">
+        <li style="background-image: url(/Assets/img/Moscow-1.jpg);"></li>
+        <li style="background-image: url(/Assets/img/Moscow-2.jpg);"></li>
+        <li style="background-image: url(/Assets/img/saint_peterburg-1.jpg);"></li>
+    </ul>
+
+</section>
+<section style="padding-top:2px;">
+    <style>
+        .navbar i {
+            padding-right: 10px;
+        }
+    </style>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="@Html.IsSelected(controller:"Personal", action:"")"><a href="/Personal"><i class="fa fa-info-circle"></i>Thông tin</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-edit"></i>Chỉnh sửa
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><i class="fa fa-info"></i>Thông tin cá nhân</a></li>
+                            <li><a href="#"><i class="fa fa-info"></i>Thông tin lịch trình</a></li>
+                            <li><a href="#">More</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Nâng cao
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><i class="fa fa-camera"></i>Ảnh đại diện</a></li>
+                            <li><a href="#"><i class="fa fa-image"></i>Ảnh bìa</a></li>
+                            <li><a href="#"> <i class="fa fa-image"></i>Album ảnh</a></li>
+                        </ul>
+                    </li>
+                    <li class="@Html.IsSelected(action:"Messager")"><a href="/Personal/Messager"> <i class="fa fa-comments"></i>Messager</a></li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><i class="fa fa-eye"></i>Xem với tư cách khách</a></li>
+                    <li><a href="#"><i class="fa fa-history"></i>Lịch sử</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</section>
+
+
+@RenderBody()
+
+<section class="probootstrap-section">
+    <div class="container wow bounceInDown" data-wow-duration="1s">
+        <div class="row heading">
+            <h2 class="mt0 mb50 text-center">Hướng Dẫn Viên</h2>
+        </div>
+        <div class="row probootstrap-gutter10">
+            <div class="col-md-6 col-sm-6">
+                <a href="#" class="probootstrap-hover-overlay">
+                    <img src="/Assets/img/saint_peterburg-1.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+                    <div class="probootstrap-text-overlay">
+                        <h3>Saint Peterburg</h3>
+                        <p>430 Hướng Dẫn Viên</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <a href="#" class="probootstrap-hover-overlay">
+                    <img src="/Assets/img/saint_peterburg-5.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+                    <div class="probootstrap-text-overlay">
+                        <h3>Saint Peterburg</h3>
+                        <p>430 Hướng Dẫn Viên</p>
+                    </div>
+                </a>
+            </div>
+            <div class="clearfix visible-sm-block"></div>
+
+            <div class="col-md-4 col-sm-6">
+                <a href="#" class="probootstrap-hover-overlay">
+                    <img src="/Assets/img/Moscow-1.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+                    <div class="probootstrap-text-overlay">
+                        <h3>Saint Peterburg</h3>
+                        <p>430 Hướng Dẫn Viên</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="#" class="probootstrap-hover-overlay">
+                    <img src="/Assets/img/Moscow-1.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+                    <div class="probootstrap-text-overlay">
+                        <h3>Saint Peterburg</h3>
+                        <p>430 Hướng Dẫn Viên</p>
+                    </div>
+                </a>
+            </div>
+            <div class="clearfix visible-sm-block"></div>
+            <div class="col-md-4 col-sm-6">
+                <a href="#" class="probootstrap-hover-overlay">
+                    <img src="/Assets/img/Moscow-3.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+                    <div class="probootstrap-text-overlay">
+                        <h3>Saint Peterburg</h3>
+                        <p>430 Hướng Dẫn Viên</p>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WebAspFindGuide.Models;
 using WebAspFindGuide.Models.Site_Model;
 
 namespace WebAspFindGuide.CustomAuthencation
@@ -13,15 +10,15 @@ namespace WebAspFindGuide.CustomAuthencation
         public string PermissionName;
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
-            var Acc = (string[])HttpContext.Current.Session[Common.Const.Session_Account];
+            var Acc = (CustomAccount)HttpContext.Current.Session[Common.Const.Session_Account];
           
             if(Acc !=null)
             {
                
                 try
                 {
-                    var Roles = PermissionName.Split(',');
-                    string role = Account_Model.Instance.GetRoleAccountByRoleID(int.Parse(Acc[3]));
+                    var Roles = PermissionName.Split('|');
+                    string role = Account_Model.Instance.GetRoleAccountByRoleID(Acc.Account_RoleID);
                     foreach (string Role in Roles)
                     {
                         if (!String.IsNullOrEmpty(role) && role == Role.Trim())

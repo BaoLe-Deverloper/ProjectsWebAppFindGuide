@@ -25,7 +25,7 @@ namespace WebAspFindGuide.Controllers
                 if (use_cookie != null)
                 {
                     FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(use_cookie.Value);
-                    Session[Common.Const.Session_Account] = JsonConvert.DeserializeObject<string[]>(ticket.UserData);
+                    Session[Common.Const.Session_Account] = JsonConvert.DeserializeObject<CustomAccount>(ticket.UserData);
                 }              
             }
             return View();

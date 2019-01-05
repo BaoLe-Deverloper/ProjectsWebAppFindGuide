@@ -21,16 +21,21 @@
 
     <div class="limiter">
         <div class="container-login100" style="background-image:url(/Assets/img/backgroudLogin.jpg); background-size:cover; ">
-            <div class="wrap-login100">
+            <div class="wrap-login100" id="pwd-container">
                 <form class="login100-form validate-form" action="SignUp" method="post">
                     @Html.AntiForgeryToken()
                     <span class="login100-form-title p-b-26">
                         Sign Up
                     </span>
 
-                    @Html.ValidationSummary(false, null, new { @style = "color:red;padding-bottom:20px;" })
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-warning text-center">
+                            @ViewBag.Error
+                        </div>
+                    }
                     <div class="wrap-input100 validate-input" data-validate="Enter Your Name">
-                        <input class="input100" type="text" name="name">
+                        <input class="input100" type="text" id="name" name="name">
                         <span class="focus-input100" data-placeholder="Name"></span>
                     </div>
                     <div class="wrap-input100 valiate-input">
@@ -42,20 +47,22 @@
                         <span class="focus-input100" data-placeholder="Email"></span>
                     </div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                    <div class="wrap-input100 validate-input" data-validate="Minimum 8 characters,letter,number .Ex:pass1234">
                         <span class="btn-show-pass">
                             <i class="fas fa-eye-slash"></i>
                         </span>
-                        <input class="input100" type="password" name="pass">
+                        <input class="input100 myPass" type="password" name="pass" id="myPass">
                         <span class="focus-input100" data-placeholder="Password"></span>
                     </div>
-
-                    <div class="wrap-input100 validate-input" data-validate="Enter password Config">
+                    <div class="">
+                        <div class="pwstrength_viewport_progress"></div>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Enter Confirm password">
                         <span class="btn-show-pass">
                             <i class="fas fa-eye-slash"></i>
                         </span>
-                        <input class="input100" type="password" name="passconfig">
-                        <span class="focus-input100" data-placeholder="Config Password"></span>
+                        <input class="input100" type="password" id="passconfig" name="passconfig">
+                        <span class="focus-input100" data-placeholder="Confirm Password"></span>
                     </div>
 
                     <div class="container-login100-form-btn p-b-26">
@@ -86,10 +93,31 @@
     <script src="/Assets/js/intlTelInput-jquery.js"></script>
     <script src="/Assets/js/popper.min.js"></script>
     <script src="/Assets/js/bootstrap.min.js"></script>
+    <script src="~/Assets/js/plugins/pwstrength-bootstrap.min.js"></script>
+    <script>
 
+        $(document).ready(function () {
+
+            var options = {};
+            options.ui = {
+                container: "#pwd-container",
+                showVerdictsInsideProgressBar: true,
+                viewports: {
+                    progress: ".pwstrength_viewport_progress"
+                }
+            };
+            options.common = {
+                debug: true,
+                usernameField: "#name"
+            };
+            $('.myPass').pwstrength(options);
+
+        });
+
+    </script>
     <script>
         $("#phone").intlTelInput({
-            separateDialCode : true,
+            separateDialCode: true,
             initialCountry: "auto",
             hiddenInput: "phone",
             geoIpLookup: function (callback) {
@@ -138,7 +166,10 @@
                         check = false;
                     }
                 }
-
+                if ($("#myPass").val().trim() != $("#passconfig").val().trim()) {
+                    $("#passconfig").parent().addClass('alert-validate');
+                    check = false;
+                }
                 return check;
             });
 
@@ -154,6 +185,14 @@
                 if ($(input).val().trim() == '') {
                     return false;
                 }
+                else {
+                    if ($(input).attr('name') == 'pass') {
+                        if ($(input).val().trim().match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/) == null) {
+                            return false;
+                        }
+                    }
+                }
+
 
             }
 

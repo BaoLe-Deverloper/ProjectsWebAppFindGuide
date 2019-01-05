@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using WebAspFindGuide.CustomAuthencation;
-using WebAspFindGuide.Models;
+﻿using System.Web.Mvc;
 using WebAspFindGuide.Models.Site_Model;
 
 namespace WebAspFindGuide.Controllers
@@ -18,12 +12,12 @@ namespace WebAspFindGuide.Controllers
         {
             guide_Model = Guide_Model.Instance;
         }
-        
+        [Route("Guide-Page-{id}")]
         [HttpGet]
         public ActionResult Index(string id)
         {
 
-            Account Guide = guide_Model.GetGuideByID(id);
+            CustomAccount Guide = guide_Model.GetGuideByID(id);
             return View(Guide);
         }
     }

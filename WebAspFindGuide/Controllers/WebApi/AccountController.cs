@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Http;
 using WebAspFindGuide.Models;
 using WebAspFindGuide.Models.Site_Model;
@@ -11,31 +8,39 @@ namespace WebAspFindGuide.Controllers.WebApi
 {
     public class AccountController : ApiController
     {
-        Account_Model account_Model;
-        public AccountController()
-        {
-            account_Model = new Account_Model();
-        }
+
         [Route("api/Account/Login")]
         [HttpPost]
         public string Login(string email, string pass)
         {
-            return account_Model.ValidateUser(email, pass);
+            return Account_Model.Instance.ValidateUser(email, pass);
 
         }
         [Route("api/Account/Create")]
         [HttpPost]
-        public bool CreateUser(Account account)
+        public string CreateUser(Account account)
         {
-            if (!account_Model.Exist_EmailOrPhone(account.Account_Email))
-                return account_Model.CreateAccount(account);
-            return false;
+            if (!Account_Model.Instance.Exist_EmailOrPhone(account.Account_Email))
+            {
+                var re = Account_Model.Instance.CreateAccount(account);
+                if (re == true)
+                    return "Success.";
+                else return "Error Connect to database.";
+            }
+               
+            return "Error" + account.Account_Email + " Exist !";
         }
-        [Route("api/Account/GetGuide")]
+        [Route("api/Account/GetAllGuide")]
         [HttpGet]
-        public List<CustomAccount> GetGuide()
+        public async Task<List<CustomAccount>> GetAllGuide()
         {
             return Guide_Model.Instance.GetAllGuide();
+        }
+        [Route("api/Account/GetGuideByID")]
+        [HttpGet]
+        public async Task<CustomAccount> GetAllGuide(string id)
+        {
+            return  Guide_Model.Instance.GetGuideByID(id);
         }
     }
 }

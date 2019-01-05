@@ -7,6 +7,7 @@
     <link href="/Assets/css/jquery.timepicker.css" rel="stylesheet" />
 }
 @section my_script {
+    <script src="/Assets/js/angular.js"></script>
     <script src="/Assets/js/jquery.timepicker.js"></script>
 
     <script type="text/javascript">
@@ -21,16 +22,16 @@
             };
             reader.readAsDataURL(event.target.files[0]);
         };
-      
+
         $('.my_btn').on('click', function (e) {
             if (url == null)
                 alert(' Hãy Chọn ảnh !');
             else
                 $('.lichtrinh').append('<li class="item_lichtrinh" > <a target="_blank" href="#">' + $('#dia_diem').val() + '</a> <a href="#" class="float-right"> Thời Gian :' + $('#start_date').val() + ' - ' + $('#end_date').val() + '</a><p>' + $('#text_Detail').val() + '</p>\
-                                                        <div  class="img_lichtrinh">\
-                                                            <div class="row probootstrap-gutter10">\
-                                                              <div class="col-md-12 col-sm-12">\
-                                                  <a href="#" class="probootstrap-hover-overlay"><img src='+ url + ' alt="Free Bootstrap Template icookies.com" class="img-responsive"><div class="probootstrap-text-overlay"><p>430 ảnh</p></div></a></div></div></div>  <a onclick = "click()" class="btn btn-primary delete_item">Xóa lịch trình này</a></li>');
+                                                            <div  class="img_lichtrinh">\
+                                                                <div class="row probootstrap-gutter10">\
+                                                                  <div class="col-md-12 col-sm-12">\
+                                                      <a href="#" class="probootstrap-hover-overlay"><img src='+ url + ' alt="Free Bootstrap Template icookies.com" class="img-responsive"><div class="probootstrap-text-overlay"><p>430 ảnh</p></div></a></div></div></div>  <a onclick = "click()" class="btn btn-primary delete_item">Xóa lịch trình này</a> <a  class="btn btn-primary Edit_item">Sửa lịch trình này</a></li>');
             $('#start_date').val('');
             $('#end_date').val('');
             $('.delete_item').on('click', function (e) {
@@ -40,11 +41,30 @@
         });
     </script>
     <script>
-      
+
     </script>
-    <script> 
+    <script>
         $(document).ready(function () {
-            $('.btn-save').on('click', function () {
+            $('.saveinfo').on('click', function () {
+                var info = [$('#Account_Name').val(),
+                $('#Account_Gender').val(),
+                $('#Account_Phone').val(),
+                $('#Account_Email').val(),
+                $('#Account_Address').val()];
+                $.ajax({
+                    type: "POST",
+                    url: "RegistrationInfo",
+                    dataType: "application/json; charset=utf-8",
+                    data: {
+                        "info": JSON.stringify(info)
+                    },
+                    success: function (respond) {
+                        alert("thành công .");
+                    }
+                });
+            });
+         
+            $('.save2').on('click', function () {
                 var lichtrinh = [];
 
                 $('.item_lichtrinh').each(function (index, el) {
@@ -56,7 +76,16 @@
                     item.push(diadiem, thoigian, Urlimg, content);
                     lichtrinh.push(item);
                 });
-                console.log(lichtrinh);
+           
+                $.ajax({
+                    type: "POST",
+                    url: "Lichtrinh",
+                    dataType: "application/json; charset=utf-8",
+                    data: { "lichtrinh": JSON.stringify(lichtrinh) },
+                    success: function (respond) {
+                        alert("thành công .");
+                    }
+                })
             })
         });
     </script>
@@ -143,54 +172,51 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label class="control-label">Họ Và tên:</label>
-                                                <input type="text" class="form-control">
+                                                <input id="Account_Name" type="text" class="form-control">
                                             </div>
 
                                             <div class="form-group">
+                                                <label class="control-label">Giới tính:</label>
+
+                                                <select id="Account_Gender" class="form-control" style="width:200px">
+                                                    <option value="0">Nam</option>
+                                                    <option value="1">Nữ</option>
+                                                </select>
+
+                                            </div>
+                                            <div class="form-group">
                                                 <label class="control-label">Số điện thoại:</label>
-                                                <input type="number" class="form-control">
+                                                <input id="Account_Phone" type="tel" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Link Facebook:</label>
+                                                <input id="Account_Facebook" type="text" class="form-control">
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label">Địa chỉ Email:</label>
-                                                <input type="email" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label">Địa Chỉ:</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label">Quê quán:</label>
-                                                <input type="text" class="form-control">
+                                                <input id="Account_Email" type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label class="control-label">Họ Và tên:</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="control-label">Số điện thoại:</label>
-                                                <input type="number" class="form-control">
+                                                <label class="control-label">Chỗ ở hiện tại:</label>
+                                                <input id="Account_Address" type="text" class="form-control">
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label">Địa chỉ Email:</label>
-                                                <input type="email" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label">Địa Chỉ:</label>
+                                                <label class="control-label">Country:</label>
                                                 <input type="text" class="form-control">
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label">Quê quán:</label>
+                                                <label class="control-label">City:</label>
                                                 <input type="text" class="form-control">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                              
                             </div>
                             <ul class="list-inline pull-right">
-                                <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                                <li><button type="button"  class="saveinfo btn btn-primary next-step btn-save">Save and continue</button></li>
                             </ul>
                         </div>
                         <div class="tab-pane" role="tabpanel" id="step2">
@@ -227,12 +253,12 @@
                                             <a class="btn btn-primary my_btn float-right"><i class="fa fa-reply"></i> Submit</a>
                                         </form>
                                     </div>
-                             
+
                                 </div>
                             </div>
                             <ul class="list-inline pull-right">
                                 <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                                <li><button type="button" class="btn btn-primary next-step btn-save">Save and continue</button></li>
+                                <li><button type="button" class="btn btn-primary next-step btn-save save2">Save and continue</button></li>
                             </ul>
                         </div>
 

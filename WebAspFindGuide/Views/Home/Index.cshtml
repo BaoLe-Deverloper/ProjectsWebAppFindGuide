@@ -14,7 +14,7 @@
             $('.dateAnimate').bootstrapMaterialDatePicker({ weekStart: 0, format: 'DD/MM/YYYY', time: false });
         })(jQuery);
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="/Assets/js/angular.js"></script>
     <script>
         var Appheader = angular.module("Appheader", []);
         Appheader.controller("headerController", function ($scope) {
@@ -74,7 +74,7 @@
 <section class="probootstrap-section probootstrap-section-lighter" ng-app="Appheader" ng-controller="headerController">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-12 col-xs-12">
                 <div class="probootstrap-card text-center probootstrap-animate">
                     <div class="probootstrap-card-media svg-sm colored">
                         <img src="/Assets/img/flaticon/svg/001-prize.svg" class="svg" alt="">
@@ -86,10 +86,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+          
+            <div class="col-md-4 col-sm-12 col-xs-12">
                 <div class="probootstrap-card text-center probootstrap-animate">
                     <div class="probootstrap-card-media svg-sm colored">
-                        <img src="/Assets/img/flaticon/svg/006-coin.svg" class="svg" >
+                        <img src="/Assets/img/flaticon/svg/006-coin.svg" class="svg">
                     </div>
                     <div class="probootstrap-card-text">
                         <h2 class="probootstrap-card-heading">Miễn Phí</h2>
@@ -98,10 +99,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-12 col-xs-12">
                 <div class="probootstrap-card text-center  probootstrap-animate">
                     <div class="probootstrap-card-media svg-sm colored">
-                        <img src="/Assets/img/flaticon/svg/003-fence.svg" class="svg" >
+                        <img src="/Assets/img/flaticon/svg/003-fence.svg" class="svg">
                     </div>
                     <div class="probootstrap-card-text">
                         <h2 class="probootstrap-card-heading">Hướng dẫn viên</h2>
@@ -191,270 +192,364 @@
             <h2 class="mt0 mb50 text-center">Hướng Dẫn Viên Uy Tin</h2>
         </div>
         <div class="row">
-            <div class="col-md-4 col-sm-6">
-                <div class="probootstrap-card probootstrap-listing">
-                    <div class="probootstrap-card-media">
-                        <div class="my-img1">
-                            <img src="/Assets/img/HDV1.jpg" class="img-rounded img-responsive" alt="">
+            <div class="col-md-4 col-sm-6  col-xs-12">
+                <section class="card">
+                    <div class="twt-feed blue-bg" style="background-image: url('/Assets/img/Moscow-3.jpg')" ;>
+                        <div class="corner-ribon black-ribon">
+                            <i class="fa fa-info"></i>
                         </div>
-                        <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a>
+
+                        <div class="media">
+                            <a href="#">
+                                <img class=" img-circle cardavatar" alt="" src="/Assets/img/HDV1.jpg">
+                            </a>
+                            <div class="media-body">
+                                <h2 class="text-white display-6">Lê Văn Bảo</h2>
+                                <p class="text-light">Project Manager</p>
+                            </div>
+                        </div>
+
+                        <a href="#" class="love "><i class="fa fa-heart"></i></a>
 
                     </div>
-                    <div class="probootstrap-card-text">
-                        <h2 class="probootstrap-card-heading"><a href="#">Lê Văn Bảo</a></h2>
-                        <div class="probootstrap-listing-location">
-                            <i class="icon-location2"></i> <span>360 W Wellington Chicago, IL 60657</span>
-                        </div>
-                        <div class="probootstrap-listing-category for-sale"><span>Điểm: 1000</span></div>
-                        <div class="probootstrap-listing-price"><strong>$ 125,000</strong> / chuyến</div>
-                    </div>
-                    <div class="divmore">
-                        <a href="Personal.html" class=" btn btn-primary btn-more"> Thông tin chi tiết </a>
-                    </div>
-                    <div class="probootstrap-card-extra">
+                    <div class="weather-category twt-category">
                         <ul>
-                            <li>
-                                Area
-                                <span>2400 m2</span>
+                            <li class="myactive">
+                                <h5>750</h5>
+                                point
+                            </li>
+                            <li class="myactive">
+                                <h5>865</h5>
+                                View
                             </li>
                             <li>
-                                Beds
-                                <span>3</span>
-                            </li>
-                            <li>
-                                Baths
-                                <span>2</span>
-                            </li>
-                            <li>
-                                Garages
-                                <span>1</span>
+                                <h5>3645</h5>
+                                Followers
                             </li>
                         </ul>
                     </div>
-                </div>
+                    <div class="CardBody">
+
+                        <div class="cardInfo">
+                            <a><i class="fa fa-map-marker"></i>New Castle, UK</a>
+                        </div>
+                        <div class="cardInfo">
+                            <a><i class="fa fa-language"></i>Russian, English</a>
+                        </div>
+                        <div class="GuidePrice">
+                            <strong>$ 125,000</strong> / chuyến
+                        </div>
+                    </div>
+
+                    <footer class="twt-footer">
+                        <a href="#"><i class="fa fa-camera"></i> xem lịch trình</a>
+
+                        <span class="pull-right">
+                            <a class="btn btn-success">Xem chi tiết >></a>
+                        </span>
+                    </footer>
+                </section>
                 <!-- END listing -->
             </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="probootstrap-card probootstrap-listing">
-                    <div class="probootstrap-card-media ">
-                        <div class="my-img1">
-                            <img src="/Assets/img/HDV1.jpg" class="img-rounded img-responsive" alt="">
+            <div class="col-md-4 col-sm-6  col-xs-12">
+                <section class="card">
+                    <div class="twt-feed blue-bg" style="background-image: url('/Assets/img/Moscow-3.jpg')" ;>
+                        <div class="corner-ribon black-ribon">
+                            <i class="fa fa-info"></i>
                         </div>
-                        <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a>
+
+                        <div class="media">
+                            <a href="#">
+                                <img class=" img-circle cardavatar" alt="" src="/Assets/img/HDV1.jpg">
+                            </a>
+                            <div class="media-body">
+                                <h2 class="text-white display-6">Lê Văn Bảo</h2>
+                                <p class="text-light">Project Manager</p>
+                            </div>
+                        </div>
+
+                        <a href="#" class="love "><i class="fa fa-heart"></i></a>
 
                     </div>
-                    <div class="probootstrap-card-text">
-                        <h2 class="probootstrap-card-heading"><a href="#">Lê Văn Bảo</a></h2>
-                        <div class="probootstrap-listing-location">
-                            <i class="icon-location2"></i> <span>360 W Wellington Chicago, IL 60657</span>
-                        </div>
-                        <div class="probootstrap-listing-category for-sale"><span>Điểm: 1000</span></div>
-                        <div class="probootstrap-listing-price"><strong>$ 125,000</strong> / chuyến</div>
-                    </div>
-                    <div class="divmore">
-                        <a href="Personal.html" class=" btn btn-primary btn-more"> Thông tin chi tiết </a>
-                    </div>
-                    <div class="probootstrap-card-extra">
+                    <div class="weather-category twt-category">
                         <ul>
-                            <li>
-                                Area
-                                <span>2400 m2</span>
+                            <li class="myactive">
+                                <h5>750</h5>
+                                point
+                            </li>
+                            <li class="myactive">
+                                <h5>865</h5>
+                                View
                             </li>
                             <li>
-                                Beds
-                                <span>3</span>
-                            </li>
-                            <li>
-                                Baths
-                                <span>2</span>
-                            </li>
-                            <li>
-                                Garages
-                                <span>1</span>
+                                <h5>3645</h5>
+                                Followers
                             </li>
                         </ul>
                     </div>
-                </div>
+                    <div class="CardBody">
+
+                        <div class="cardInfo">
+                            <a><i class="fa fa-map-marker"></i>New Castle, UK</a>
+                        </div>
+                        <div class="cardInfo">
+                            <a><i class="fa fa-language"></i>Russian, English</a>
+                        </div>
+                        <div class="GuidePrice">
+                            <strong>$ 125,000</strong> / chuyến
+                        </div>
+                    </div>
+
+                    <footer class="twt-footer">
+                        <a href="#"><i class="fa fa-camera"></i> xem lịch trình</a>
+
+                        <span class="pull-right">
+                            <a class="btn btn-success">Xem chi tiết >></a>
+                        </span>
+                    </footer>
+                </section>
                 <!-- END listing -->
             </div>
-            <div class="clearfix visible-sm-block"></div>
-            <div class="col-md-4 col-sm-6">
-                <div class="probootstrap-card probootstrap-listing">
-                    <div class="probootstrap-card-media  ">
-                        <div class="my-img1">
-                            <img src="/Assets/img/HDV1.jpg" class="img-rounded img-responsive" alt="">
+            <div class="col-md-4 col-sm-6  col-xs-12">
+                <section class="card">
+                    <div class="twt-feed blue-bg" style="background-image: url('/Assets/img/Moscow-3.jpg')" ;>
+                        <div class="corner-ribon black-ribon">
+                            <i class="fa fa-info"></i>
                         </div>
-                        <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a>
+
+                        <div class="media">
+                            <a href="#">
+                                <img class=" img-circle cardavatar" alt="" src="/Assets/img/HDV1.jpg">
+                            </a>
+                            <div class="media-body">
+                                <h2 class="text-white display-6">Lê Văn Bảo</h2>
+                                <p class="text-light">Project Manager</p>
+                            </div>
+                        </div>
+
+                        <a href="#" class="love "><i class="fa fa-heart"></i></a>
 
                     </div>
-                    <div class="probootstrap-card-text">
-                        <h2 class="probootstrap-card-heading"><a href="#">Lê Văn Bảo</a></h2>
-                        <div class="probootstrap-listing-location">
-                            <i class="icon-location2"></i> <span>360 W Wellington Chicago, IL 60657</span>
-                        </div>
-                        <div class="probootstrap-listing-category for-sale"><span>Điểm: 1000</span></div>
-                        <div class="probootstrap-listing-price"><strong>$ 125,000</strong> / chuyến</div>
-                    </div>
-                    <div class="divmore">
-                        <a href="Personal.html" class=" btn btn-primary btn-more"> Thông tin chi tiết </a>
-                    </div>
-                    <div class="probootstrap-card-extra">
+                    <div class="weather-category twt-category">
                         <ul>
-                            <li>
-                                Area
-                                <span>2400 m2</span>
+                            <li class="myactive">
+                                <h5>750</h5>
+                                point
+                            </li>
+                            <li class="myactive">
+                                <h5>865</h5>
+                                View
                             </li>
                             <li>
-                                Beds
-                                <span>3</span>
-                            </li>
-                            <li>
-                                Baths
-                                <span>2</span>
-                            </li>
-                            <li>
-                                Garages
-                                <span>1</span>
+                                <h5>3645</h5>
+                                Followers
                             </li>
                         </ul>
                     </div>
-                </div>
-                <!-- END listing -->
+                    <div class="CardBody">
+
+                        <div class="cardInfo">
+                            <a><i class="fa fa-map-marker"></i>New Castle, UK</a>
+                        </div>
+                        <div class="cardInfo">
+                            <a><i class="fa fa-language"></i>Russian, English</a>
+                        </div>
+                        <div class="GuidePrice">
+                            <strong>$ 125,000</strong> / chuyến
+                        </div>
+                    </div>
+
+                    <footer class="twt-footer">
+                        <a href="#"><i class="fa fa-camera"></i> xem lịch trình</a>
+
+                        <span class="pull-right">
+                            <a class="btn btn-success">Xem chi tiết >></a>
+                        </span>
+                    </footer>
+                </section>
                 <!-- END listing -->
             </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="probootstrap-card probootstrap-listing">
-                    <div class=" probootstrap-card-media  ">
-                        <div class="my-img1">
-                            <img src="/Assets/img/HDV1.jpg" class="img-rounded img-responsive" alt="">
+            <div class="col-md-4 col-sm-6  col-xs-12">
+                <section class="card">
+                    <div class="twt-feed blue-bg" style="background-image: url('/Assets/img/Moscow-3.jpg')" ;>
+                        <div class="corner-ribon black-ribon">
+                            <i class="fa fa-info"></i>
                         </div>
-                        <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a>
+
+                        <div class="media">
+                            <a href="#">
+                                <img class=" img-circle cardavatar" alt="" src="~/Assets/img/avarta1.jpg">
+                            </a>
+                            <div class="media-body">
+                                <h2 class="text-white display-6">Lê Văn Bảo</h2>
+                                <p class="text-light">Project Manager</p>
+                            </div>
+                        </div>
+
+                        <a href="#" class="love "><i class="fa fa-heart"></i></a>
 
                     </div>
-                    <div class="probootstrap-card-text">
-                        <h2 class="probootstrap-card-heading"><a href="#">Lê Văn Bảo</a></h2>
-                        <div class="probootstrap-listing-location">
-                            <i class="icon-location2"></i> <span>360 W Wellington Chicago, IL 60657</span>
-                        </div>
-                        <div class="probootstrap-listing-category for-sale"><span>Điểm: 1000</span></div>
-                        <div class="probootstrap-listing-price"><strong>$ 125,000</strong> / chuyến</div>
-                    </div>
-                    <div class="divmore">
-                        <a href="Personal.html" class=" btn btn-primary btn-more"> Thông tin chi tiết </a>
-                    </div>
-                    <div class="probootstrap-card-extra">
+                    <div class="weather-category twt-category">
                         <ul>
-                            <li>
-                                Area
-                                <span>2400 m2</span>
+                            <li class="myactive">
+                                <h5>750</h5>
+                                point
+                            </li>
+                            <li class="myactive">
+                                <h5>865</h5>
+                                View
                             </li>
                             <li>
-                                Beds
-                                <span>3</span>
-                            </li>
-                            <li>
-                                Baths
-                                <span>2</span>
-                            </li>
-                            <li>
-                                Garages
-                                <span>1</span>
+                                <h5>3645</h5>
+                                Followers
                             </li>
                         </ul>
                     </div>
-                </div>
+                    <div class="CardBody">
+
+                        <div class="cardInfo">
+                            <a><i class="fa fa-map-marker"></i>New Castle, UK</a>
+                        </div>
+                        <div class="cardInfo">
+                            <a><i class="fa fa-language"></i>Russian, English</a>
+                        </div>
+                        <div class="GuidePrice">
+                            <strong>$ 125,000</strong> / chuyến
+                        </div>
+                    </div>
+
+                    <footer class="twt-footer">
+                        <a href="#"><i class="fa fa-camera"></i> xem lịch trình</a>
+
+                        <span class="pull-right">
+                            <a class="btn btn-success">Xem chi tiết >></a>
+                        </span>
+                    </footer>
+                </section>
                 <!-- END listing -->
             </div>
-            <div class="clearfix visible-sm-block"></div>
-            <div class="col-md-4 col-sm-6">
-                <div class="probootstrap-card probootstrap-listing">
-                    <div class="probootstrap-card-media ">
-                        <div class="my-img1">
-                            <img src="/Assets/img/HDV1.jpg" class="img-rounded img-responsive" alt="">
+            <div class="col-md-4 col-sm-6  col-xs-12">
+                <section class="card">
+                    <div class="twt-feed blue-bg" style="background-image: url('https://images.unsplash.com/photo-1540205082-e56e180508e6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=889&q=80')" ;>
+                        <div class="corner-ribon black-ribon">
+                            <i class="fa fa-info"></i>
                         </div>
 
-                        <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a>
+                        <div class="media">
+                            <a href="#">
+                                <img class=" img-circle cardavatar" alt="" src="/Assets/img/HDV1.jpg">
+                            </a>
+                            <div class="media-body">
+                                <h2 class="text-white display-6">Lê Văn Bảo</h2>
+                                <p class="text-light">Project Manager</p>
+                            </div>
+                        </div>
+
+                        <a href="#" class="love "><i class="fa fa-heart"></i></a>
 
                     </div>
-                    <div class="probootstrap-card-text">
-                        <h2 class="probootstrap-card-heading"><a href="#">Lê Văn Bảo</a></h2>
-                        <div class="probootstrap-listing-location">
-                            <i class="icon-location2"></i> <span>360 W Wellington Chicago, IL 60657</span>
-                        </div>
-                        <div class="probootstrap-listing-category for-sale"><span>Điểm: 1000</span></div>
-                        <div class="probootstrap-listing-price"><strong>$ 125,000</strong> / chuyến</div>
-                    </div>
-                    <div class="divmore">
-                        <a href="Personal.html" class=" btn btn-primary btn-more"> Thông tin chi tiết </a>
-                    </div>
-                    <div class="probootstrap-card-extra">
+                    <div class="weather-category twt-category">
                         <ul>
-                            <li>
-                                Area
-                                <span>2400 m2</span>
+                            <li class="myactive">
+                                <h5>750</h5>
+                                point
+                            </li>
+                            <li class="myactive">
+                                <h5>865</h5>
+                                View
                             </li>
                             <li>
-                                Beds
-                                <span>3</span>
-                            </li>
-                            <li>
-                                Baths
-                                <span>2</span>
-                            </li>
-                            <li>
-                                Garages
-                                <span>1</span>
+                                <h5>3645</h5>
+                                Followers
                             </li>
                         </ul>
                     </div>
-                </div>
+                    <div class="CardBody">
+
+                        <div class="cardInfo">
+                            <a><i class="fa fa-map-marker"></i>New Castle, UK</a>
+                        </div>
+                        <div class="cardInfo">
+                            <a><i class="fa fa-language"></i>Russian, English</a>
+                        </div>
+                        <div class="GuidePrice">
+                            <strong>$ 125,000</strong> / chuyến
+                        </div>
+                    </div>
+
+                    <footer class="twt-footer">
+                        <a href="#"><i class="fa fa-camera"></i> xem lịch trình</a>
+
+                        <span class="pull-right">
+                            <a class="btn btn-success">Xem chi tiết >></a>
+                        </span>
+                    </footer>
+                </section>
                 <!-- END listing -->
             </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="probootstrap-card probootstrap-listing">
-                    <div class="probootstrap-card-media ">
-                        <div class="my-img1">
-                            <img src="/Assets/img/HDV1.jpg" class="img-rounded img-responsive" alt="">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <section class="card">
+                    <div class="twt-feed blue-bg" style="background-image: url('https://images.unsplash.com/photo-1540205082-e56e180508e6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=889&q=80')" ;>
+                        <div class="corner-ribon black-ribon">
+                            <i class="fa fa-info"></i>
                         </div>
 
-                        <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a>
+                        <div class="media">
+                            <a href="#">
+                                <img class=" img-circle cardavatar" alt="" src="/Assets/img/HDV1.jpg">
+                            </a>
+                            <div class="media-body">
+                                <h2 class="text-white display-6">Lê Văn Bảo</h2>
+                                <p class="text-light">Project Manager</p>
+                            </div>
+                        </div>
+
+                        <a href="#" class="love "><i class="fa fa-heart"></i></a>
 
                     </div>
-                    <div class="probootstrap-card-text">
-                        <h2 class="probootstrap-card-heading"><a href="#">Lê Văn Bảo</a></h2>
-                        <div class="probootstrap-listing-location">
-                            <i class="icon-location2"></i> <span>360 W Wellington Chicago, IL 60657</span>
-                        </div>
-                        <div class="probootstrap-listing-category for-sale"><span>Điểm: 1000</span></div>
-                        <div class="probootstrap-listing-price"><strong>$ 125,000</strong> / chuyến</div>
-                    </div>
-                    <div class="divmore">
-                        <a href="Personal.html" class=" btn btn-primary btn-more"> Thông tin chi tiết </a>
-                    </div>
-                    <div class="probootstrap-card-extra">
+                    <div class="weather-category twt-category">
                         <ul>
-                            <li>
-                                Area
-                                <span>2400 m2</span>
+                            <li class="myactive">
+                                <h5>750</h5>
+                                point
+                            </li>
+                            <li class="myactive">
+                                <h5>865</h5>
+                                View
                             </li>
                             <li>
-                                Beds
-                                <span>3</span>
-                            </li>
-                            <li>
-                                Baths
-                                <span>2</span>
-                            </li>
-                            <li>
-                                Garages
-                                <span>1</span>
+                                <h5>3645</h5>
+                                Followers
                             </li>
                         </ul>
                     </div>
-                </div>
+                    <div class="CardBody">
+
+                        <div class="cardInfo">
+                            <a><i class="fa fa-map-marker"></i>New Castle, UK</a>
+                        </div>
+                        <div class="cardInfo">
+                            <a><i class="fa fa-language"></i>Russian, English</a>
+                        </div>
+                        <div class="GuidePrice">
+                            <strong>$ 125,000</strong> / chuyến
+                        </div>
+                    </div>
+
+                    <footer class="twt-footer">
+                        <a href="#"><i class="fa fa-camera"></i> xem lịch trình</a>
+
+                        <span class="pull-right">
+                            <a class="btn btn-success">Xem chi tiết >></a>
+                        </span>
+                    </footer>
+                </section>
                 <!-- END listing -->
             </div>
+
+
         </div>
+        <div class="text-center"><a href="#" class="btn btn-subscribe"><h3>Xem thêm</h3> </a></div>
     </div>
 </section>
 

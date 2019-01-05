@@ -39,10 +39,11 @@ label.star {
   -webkit-transition: 0.5s all; /* For Safari 3.1 to 6.0 */
    transition:0.5s all;
  }
+
   .image_outer_container .green_icon{
          background-color: #4cd137;
          position: absolute;
-         right: 15%;
+         right: 20%;
          bottom: 10px;
          height: 30px;
          width: 30px;
@@ -756,7 +757,7 @@ ul.timeline > li:before {
 /**/
 .btn-more{
   animation-duration: 1.5s;
-  margin: 5px 50%;
+  margin:auto auto;
   width: 150px;
   animation-name: swing ;
 }
@@ -766,7 +767,7 @@ ul.timeline > li:before {
   animation-name: rubberBand;
 }
 .divmore{
-  display: flex;
+  text-align:center;
   justify-content: center;
 }
 /*******************************************************/
@@ -1395,3 +1396,443 @@ body {
         margin-bottom: 10px;
     }
 }
+/*card Guide*/
+
+
+.card {
+    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
+    border-radius: 0;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    border-radius:5px;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    box-shadow: 5px 5px 5px #666;
+    -moz-box-shadow: 5px 5px 5px #666;
+    -webkit-box-shadow: 5px 5px 5px #666;
+}
+
+.twt-feed.blue-bg {
+    background: #58C9F3;
+    background-position: center;
+    background-size: cover;
+}
+
+
+
+.corner-ribon {
+    text-align: center;
+    width: 71px;
+    height: 71px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 20px;
+}
+
+    .corner-ribon i {
+        padding: 10px 0 0 35px;
+        color: #fff;
+    }
+
+.black-ribon {
+    background: url("../img/twitter_corner_blue.png") no-repeat;
+}
+
+
+
+.twt-feed .wtt-mark {
+    color: rgba(255, 255, 255, 0.15);
+    font-size: 160px;
+    position: absolute;
+    top: 10px;
+    left: 40%;
+}
+
+.twt-feed {
+    -webkit-border-radius: 4px 4px 0 0;
+    color: #FFFFFF;
+    padding: 40px 10px 10px;
+    position: relative;
+    min-height: 170px;
+}
+
+
+.twt-category {
+    display: inline-block;
+    margin-bottom: 11px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+    .twt-category ul li {
+        font-size: 13px;
+    }
+
+.media {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+
+.media-body {
+    -ms-flex: 1;
+    flex: 1;
+}
+
+
+
+div[class*="col-"] {
+    float: left;
+}
+
+.twt-footer, .twt-footer a {
+    color: #d2d2d2;
+}
+
+.twt-footer {
+    padding: 12px 15px;
+}
+
+.weather-category {
+    padding: 15px 0;
+}
+
+    .weather-category ul li {
+        width: 32%;
+        text-align: center;
+        display: inline-block;
+    }
+
+.myactive {
+    border-right: 1px solid #e6e6e6;
+}
+
+.weather-category ul {
+    padding: 0;
+}
+
+.love {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    position: absolute;
+    bottom: -20px;
+    right: 30px;
+    background: #ffffff;
+    -webkit-transition: .3s all ease-in;
+    transition: .3s all ease-in;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    -webkit-box-shadow: 0px 6px 8px -6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 6px 8px -6px rgba(0, 0, 0, 0.1);
+}
+
+.love_active {
+    background-color: #007bff;
+    color: #ffff;
+}
+
+.love:hover {
+    background-color: #007bff;
+    color: #ffff;
+}
+
+.GuidePrice {
+    font-size: 28px;
+    color: #2866AB;
+    text-align: center;
+}
+
+.CardBody {
+}
+
+    .CardBody div {
+        margin-bottom: 20px;
+    }
+
+.cardInfo {
+    padding-left: 40px;
+}
+
+    .cardInfo a i {
+        padding-right: 20px;
+    }
+.cardavatar {
+    width: 85px;
+    height: 85px;
+    margin-right: 1rem !important;
+    align-self: center !important;
+}
+/*finsh card Guide*/
+
+/* PIN BOARD */
+ul.notes li,
+ul.tag-list li {
+    list-style: none;
+}
+
+    ul.notes li h4 {
+        margin-top: 20px;
+        font-size: 16px;
+    }
+
+    ul.notes li div {
+        text-decoration: none;
+        color: #000;
+        background: #ffc;
+        display: block;
+        height: 140px;
+        width: 140px;
+        padding: 1em;
+        position: relative;
+    }
+
+        ul.notes li div small {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 10px;
+        }
+
+        ul.notes li div a {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            color: inherit;
+        }
+
+ul.notes li {
+    margin: 10px 40px 50px 0;
+    float: left;
+}
+
+    ul.notes li div p {
+        font-size: 12px;
+    }
+
+    ul.notes li div {
+        text-decoration: none;
+        color: #000;
+        background: #ffc;
+        display: block;
+        height: 140px;
+        width: 140px;
+        padding: 1em;
+        /* Firefox */
+        -moz-box-shadow: 5px 5px 2px #212121;
+        /* Safari+Chrome */
+        -webkit-box-shadow: 5px 5px 2px rgba(33, 33, 33, 0.7);
+        /* Opera */
+        box-shadow: 5px 5px 2px rgba(33, 33, 33, 0.7);
+    }
+
+    ul.notes li div {
+        -webkit-transform: rotate(-6deg);
+        -o-transform: rotate(-6deg);
+        -moz-transform: rotate(-6deg);
+        -ms-transform: rotate(-6deg);
+    }
+
+    ul.notes li:nth-child(even) div {
+        -o-transform: rotate(4deg);
+        -webkit-transform: rotate(4deg);
+        -moz-transform: rotate(4deg);
+        -ms-transform: rotate(4deg);
+        position: relative;
+        top: 5px;
+    }
+
+    ul.notes li:nth-child(3n) div {
+        -o-transform: rotate(-3deg);
+        -webkit-transform: rotate(-3deg);
+        -moz-transform: rotate(-3deg);
+        -ms-transform: rotate(-3deg);
+        position: relative;
+        top: -5px;
+    }
+
+    ul.notes li:nth-child(5n) div {
+        -o-transform: rotate(5deg);
+        -webkit-transform: rotate(5deg);
+        -moz-transform: rotate(5deg);
+        -ms-transform: rotate(5deg);
+        position: relative;
+        top: -10px;
+    }
+
+    ul.notes li div:hover,
+    ul.notes li div:focus {
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -o-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        position: relative;
+        z-index: 5;
+    }
+
+    ul.notes li div {
+        text-decoration: none;
+        color: #000;
+        background: #ffc;
+        display: block;
+        height: 210px;
+        width: 210px;
+        padding: 1em;
+        -moz-box-shadow: 5px 5px 7px #212121;
+        -webkit-box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
+        box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
+        -moz-transition: -moz-transform 0.15s linear;
+        -o-transition: -o-transform 0.15s linear;
+        -webkit-transition: -webkit-transform 0.15s linear;
+    }
+
+
+/*Finsh PIN BOARD */
+
+
+/* Chat view */
+.message-input {
+    height: 90px !important;
+}
+
+.message-avatar {
+    width: 36px;
+    height: 36px;
+    float: left;
+    margin-right: 10px;
+}
+
+.chat-user-name {
+    padding: 10px;
+}
+
+.chat-user {
+    padding: 8px 10px;
+    border-bottom: 1px solid #e7eaec;
+}
+
+    .chat-user a {
+        color: inherit;
+    }
+
+.chat-view {
+    z-index: 20012;
+}
+
+.chat-users,
+.chat-statistic {
+    margin-left: -30px;
+}
+
+@media (max-width: 992px) {
+    .chat-users,
+    .chat-statistic {
+        margin-left: 0;
+    }
+}
+
+.chat-view .ibox-content {
+    padding: 0;
+}
+
+.chat-message {
+    padding: 10px 20px;
+}
+
+.message-avatar {
+    height: 48px;
+    width: 48px;
+    border: 1px solid #e7eaec;
+    border-radius: 4px;
+    margin-top: 1px;
+}
+
+.chat-discussion .chat-message.left .message-avatar {
+    float: left;
+    margin-right: 10px;
+}
+
+.chat-discussion .chat-message.right .message-avatar {
+    float: right;
+    margin-left: 10px;
+}
+
+.message {
+    background-color: #fff;
+    border: 1px solid #e7eaec;
+    text-align: left;
+    display: block;
+    padding: 10px 20px;
+    position: relative;
+    border-radius: 4px;
+}
+
+.chat-discussion .chat-message.left .message-date {
+    float: right;
+}
+
+.chat-discussion .chat-message.right .message-date {
+    float: left;
+}
+
+.chat-discussion .chat-message.left .message {
+    text-align: left;
+    margin-left: 55px;
+}
+
+.chat-discussion .chat-message.right .message {
+    text-align: right;
+    margin-right: 55px;
+}
+
+.message-date {
+    font-size: 10px;
+    color: #888888;
+}
+
+.message-content {
+    display: block;
+}
+
+.chat-discussion {
+    background: #eee;
+    padding: 15px;
+    height: 450px;
+    overflow-y: auto;
+}
+
+.chat-users {
+    overflow-y: auto;
+    height: 450px;
+}
+
+.chat-message-form .form-group {
+    margin-bottom: 0;
+}
+/* jsTree */
+.jstree-open > .jstree-anchor > .fa-folder:before {
+    content: "\f07c";
+}
+
+.jstree-default .jstree-icon.none {
+    width: 0;
+}
+
+.message-avatar {
+    border-radius: 50%;
+}
+/*End Chat view */
+
