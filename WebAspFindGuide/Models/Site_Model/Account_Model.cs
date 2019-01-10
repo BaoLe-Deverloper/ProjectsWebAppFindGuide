@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
-using System.Web.Script.Serialization;
 
 namespace WebAspFindGuide.Models.Site_Model
 {
@@ -12,10 +10,10 @@ namespace WebAspFindGuide.Models.Site_Model
         private static Account_Model instance;
         public static Account_Model Instance
         {
-          set
+            set
             {
-                instance = value; 
-            }   
+                instance = value;
+            }
             get
             {
                 if (instance == null)
@@ -28,9 +26,9 @@ namespace WebAspFindGuide.Models.Site_Model
         {
             webData = new WebData();
         }
-       
-      
-      
+
+
+
         public string[] GetRoleAccountByUserName(string usename)
         {
 
@@ -43,10 +41,10 @@ namespace WebAspFindGuide.Models.Site_Model
             }
             catch (Exception)
             {
-                return null; 
+                return null;
             }
         }
-       
+
         public Account GetAccountByUserName(string username)
         {
 
@@ -74,11 +72,11 @@ namespace WebAspFindGuide.Models.Site_Model
         /// <param name="EmailOrPhone"></param>
         /// <param name="pass"></param>
         /// <returns></returns>
-      
+
         public string ValidateUser(string Email, string pass)
         {
 
-           
+
             try
             {
                 var account = webData.Accounts.SingleOrDefault(q => q.Account_Email.ToUpper() == Email.ToUpper());
@@ -119,21 +117,21 @@ namespace WebAspFindGuide.Models.Site_Model
         /// <returns></returns>
         public Account GetAccountByID(string ID)
         {
-           
+
             var account = webData.Accounts.SingleOrDefault(q => q.AccountID == ID);
             account.Account_Pass = "";
 
             return account;
         }
 
-     
-        public bool CreateAccount([Bind(Include = "Account_Email,Account_Name,Account_Pass,Account_Phone,Account_CreateDate,Account_CodeConfig")]Account new_account)
+
+        public async Task<bool> CreateAccount([Bind(Include = "Account_Email,Account_Name,Account_Pass,Account_RoleID,Account_Phone,Account_CreateDate,Account_CodeConfig")]Account new_account)
         {
             try
             {
-                
+
                 webData.Accounts.Add(new_account);
-                webData.SaveChanges();
+                await webData.SaveChangesAsync();
                 return true;
             }
             catch (Exception)
@@ -146,14 +144,14 @@ namespace WebAspFindGuide.Models.Site_Model
         /// </summary>
         /// <param name="new_account"></param>
         /// <returns></returns>
-       
-        public bool UpDateAccount(Account new_account)
+
+        public async Task<bool> UpDateAccount(Account new_account)
         {
             try
             {
                 var account = webData.Accounts.SingleOrDefault(q => q.AccountID == new_account.AccountID);
                 account = new_account;
-                webData.SaveChanges();
+                await webData.SaveChangesAsync();
                 return true;
             }
             catch (Exception)
@@ -162,14 +160,14 @@ namespace WebAspFindGuide.Models.Site_Model
             }
         }
 
-        public bool ActivationAccount(string code)
+        public async Task<bool> ActivationAccount(string code)
         {
             try
             {
 
                 var account = webData.Accounts.Where(u => u.Account_CodeConfig.ToString().Equals(code)).FirstOrDefault();
                 account.Account_Config = true;
-                webData.SaveChanges();
+                await webData.SaveChangesAsync();
                 return true;
             }
             catch (Exception)
@@ -177,10 +175,10 @@ namespace WebAspFindGuide.Models.Site_Model
                 return false;
             }
         }
-       
+
         public bool Exist_EmailOrPhone(string EmailOrPhone)
         {
-           
+
             try
             {
                 var account = webData.Accounts.Where(q => q.Account_Email == EmailOrPhone || q.Account_Phone == EmailOrPhone).SingleOrDefault();
@@ -194,14 +192,14 @@ namespace WebAspFindGuide.Models.Site_Model
                 return true;
             }
         }
-       
-             public string GetRoleAccountByRoleID(int? RoleID)
+
+        public string GetRoleAccountByRoleID(int? RoleID)
         {
-           
+
             try
             {
-               
-                var Role = webData.Roles.Where(q=>q.RoleID == RoleID).First();
+
+                var Role = webData.Roles.Where(q => q.RoleID == RoleID).First();
                 return Role.RoleKey;
                 /* webData.Roles.Where(r => r.RoleID == (webData.Accounts.Where(q => q.AccountID == id).SingleOrDefault().Account_RoleID));*/
             }
@@ -210,7 +208,117 @@ namespace WebAspFindGuide.Models.Site_Model
                 return null;
             }
         }
+        public async Task<bool> ChangePass(string ID, string email, string oldpass, string newpass)
+        {
 
-        
+
+            try
+            {
+                var account = webData.Accounts.SingleOrDefault(q => q.AccountID == ID || q.Account_Email.ToUpper() == email.ToUpper());
+                if (account != null && account.Account_Pass == Common.HashMD5.GetMD5Hash(oldpass))
+                {
+                    account.Account_Pass = Common.HashMD5.GetMD5Hash(newpass);
+                    await webData.SaveChangesAsync();
+                    return true;
+                }
+                else return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// thay đổi mật khẩu khi không có mật khẩu cũ => xác nhận báng email nên chú ý khi dùng
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="email"></param>
+        /// <param name="newpass"></param>
+        /// <returns></returns>
+        public async Task<bool> ChangePassNoOldPass(string ID, string email, string newpass)
+        {
+
+
+            try
+            {
+                var account = webData.Accounts.SingleOrDefault(q => q.AccountID == ID || q.Account_Email.ToUpper() == email.ToUpper());
+                account.Account_Pass = Common.HashMD5.GetMD5Hash(newpass);
+                await webData.SaveChangesAsync();
+                return true;
+
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> changeAccountCode(string code, string ID = null, string email = null)
+        {
+            try
+            {
+                var account = webData.Accounts.SingleOrDefault(q => q.AccountID == ID || q.Account_Email.ToUpper() == email.ToUpper());
+                account.Account_CodeConfig = code;
+                await webData.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
+
+        public string GetAccountCodeConfig(string email)
+        {
+            var account = webData.Accounts.SingleOrDefault(q => q.Account_Email.ToUpper() == email.ToUpper());
+            return account.Account_CodeConfig;
+        }
+
+        public async Task<bool> UnConfirmAccountByEmailOrID(string ID = null, string email = null)
+        {
+            try
+            {
+
+                var account = webData.Accounts.SingleOrDefault(q => q.AccountID == ID || q.Account_Email.ToUpper() == email.ToUpper());
+                account.Account_Config = false;
+                await webData.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public async Task<bool> LockAccount (string email)
+        {
+            try
+            {
+
+                var account = webData.Accounts.SingleOrDefault(q=>q.Account_Email.ToUpper() == email.ToUpper());
+                account.Account_Lock = true;
+                await webData.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public async Task<bool> ConfirmUnlock(string id)
+        {
+            try
+            {
+
+                var account = webData.Accounts.SingleOrDefault(q => q.Account_CodeConfig ==id);
+                account.Account_Lock = false;
+                await webData.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

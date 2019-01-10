@@ -1,7 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -28,7 +25,7 @@ namespace WebAspFindGuide.Areas.Admin_Page.Controllers
             var session = Session[Common.Const.Session_Admin];
             if (session == null)
             {
-                filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { Controller = "AccountAdmin", Action = "Login" }));
+                filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { Controller = "Account", Action = "Login" }));
             }
             base.OnActionExecuting(filterContext);
         }

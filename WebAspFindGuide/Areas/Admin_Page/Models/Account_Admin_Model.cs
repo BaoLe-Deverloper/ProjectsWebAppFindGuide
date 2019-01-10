@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WebAspFindGuide.Areas.Admin_Page.Models.Objects;
@@ -51,7 +52,7 @@ namespace WebAspFindGuide.Areas.Admin_Page.Models
                                 else
                                     return "You do not have sufficient permissions to access this page !";
                             }
-                                
+
                             else return "This account is locked !";
                         }
                         else
@@ -72,18 +73,21 @@ namespace WebAspFindGuide.Areas.Admin_Page.Models
             }
         }
 
-        public Admin_Account GetAccountByEmail (string email)
+        public Admin_Account GetAccountByEmail(string email)
         {
             var acc = webData.Accounts.SingleOrDefault(q => q.Account_Email.ToUpper() == email.ToUpper());
-            return new Admin_Account { AccountID = acc.AccountID,
-                                       Account_Email = acc.Account_Email,
-                                       Account_Avarta = acc.Account_Avarta,
-                                       Account_CreateDate = acc.Account_CreateDate,
-                                       Account_Name = acc.Account_Name,
-                                       Account_Gender = acc.Account_Gender,
-                                       Account_Phone = acc.Account_Phone};
+            return new Admin_Account
+            {
+                AccountID = acc.AccountID,
+                Account_Email = acc.Account_Email,
+                Account_Avarta = acc.Account_Avarta,
+                Account_CreateDate = acc.Account_CreateDate,
+                Account_Name = acc.Account_Name,
+                Account_Gender = acc.Account_Gender,
+                Account_Phone = acc.Account_Phone
+            };
         }
-        public bool ExistEmail (string email)
+        public bool ExistEmail(string email)
         {
             var acc = webData.Accounts.SingleOrDefault(q => q.Account_Email.ToUpper() == email.ToUpper());
             if (acc != null)
@@ -91,14 +95,14 @@ namespace WebAspFindGuide.Areas.Admin_Page.Models
             else return false;
         }
 
-        public bool ActivationAccount(string code)
+        public async Task<bool> ActivationAccount(string code)
         {
             try
             {
 
                 var account = webData.Accounts.Where(u => u.Account_CodeConfig.ToString().Equals(code)).FirstOrDefault();
                 account.Account_Config = true;
-                webData.SaveChanges();
+                await webData.SaveChangesAsync();
                 return true;
             }
             catch (Exception)
@@ -107,12 +111,84 @@ namespace WebAspFindGuide.Areas.Admin_Page.Models
             }
         }
 
-        public bool CreateAccount([Bind(Include = "Account_Email,Account_Name,Account_RoleID,Account_Pass,Account_Phone,Account_CreateDate,Account_CodeConfig")]Account new_account)
+        public async Task<bool> CreateAccount([Bind(Include = "Account_Email,Account_Name,Account_RoleID,Account_Pass,Account_Phone,Account_CreateDate,Account_CodeConfig")]Account new_account)
         {
             try
             {
                 webData.Accounts.Add(new_account);
-                webData.SaveChanges();
+                await webData.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public async Task<bool> ChangePass(string ID, string email, string oldpass, string newpass)
+        {
+
+            try
+            {
+                var account = webData.Accounts.SingleOrDefault(q => q.AccountID == ID || q.Account_Email.ToUpper() == email.ToUpper());
+                if (account != null && account.Account_Pass == Common.HashMD5.GetMD5Hash(oldpass))
+                {
+                    account.Account_Pass = Common.HashMD5.GetMD5Hash(newpass);
+                    await webData.SaveChangesAsync();
+                    return true;
+                }
+                else return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+          
+        public string GetAccountCodeConfig(string email)
+        {
+            var account = webData.Accounts.SingleOrDefault(q => q.Account_Email.ToUpper() == email.ToUpper());
+            return account.Account_CodeConfig;
+        }
+
+        public async void UnConfirmAccountByEmailOrID(string ID = null, string email = null)
+        {
+            try
+            {
+
+                var account = webData.Accounts.SingleOrDefault(q => q.AccountID == ID || q.Account_Email.ToUpper() == email.ToUpper());
+                account.Account_Config = false;
+                await webData.SaveChangesAsync();
+
+            }
+            catch(Exception)
+            {
+
+            }
+        }
+      
+        public async Task<bool> LockAccount(string email)
+        {
+            try
+            {
+
+                var account = webData.Accounts.SingleOrDefault(q => q.Account_Email.ToUpper() == email.ToUpper());
+                account.Account_Lock = true;
+                await webData.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public async Task<bool> UnLockAccount(string email)
+        {
+            try
+            {
+
+                var account = webData.Accounts.SingleOrDefault(q => q.Account_Email.ToUpper() == email.ToUpper());
+                account.Account_Lock = false;
+                await webData.SaveChangesAsync();
                 return true;
             }
             catch (Exception)

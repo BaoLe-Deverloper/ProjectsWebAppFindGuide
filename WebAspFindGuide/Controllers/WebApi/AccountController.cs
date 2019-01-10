@@ -18,11 +18,11 @@ namespace WebAspFindGuide.Controllers.WebApi
         }
         [Route("api/Account/Create")]
         [HttpPost]
-        public string CreateUser(Account account)
+        public async Task<string> CreateUser(Account account)
         {
             if (!Account_Model.Instance.Exist_EmailOrPhone(account.Account_Email))
             {
-                var re = Account_Model.Instance.CreateAccount(account);
+                var re = await Account_Model.Instance.CreateAccount(account);
                 if (re == true)
                     return "Success.";
                 else return "Error Connect to database.";
@@ -32,7 +32,7 @@ namespace WebAspFindGuide.Controllers.WebApi
         }
         [Route("api/Account/GetAllGuide")]
         [HttpGet]
-        public async Task<List<CustomAccount>> GetAllGuide()
+        public List<CustomAccount> GetAllGuide()
         {
             return Guide_Model.Instance.GetAllGuide();
         }

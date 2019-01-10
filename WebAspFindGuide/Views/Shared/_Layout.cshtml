@@ -48,8 +48,10 @@
                                 <ul class="dropdown-menu  dropdown-menu-left user-dropdown">
 
                                     @*<li><a href="#"><span class="icon-user"></span>@user.Account_Name</a></li>*@
-                                    <li><a href="/Personal"><span class="fa fa-user-circle"></span> My Personal</a></li>
-
+                                    @if(Html.CheckRoleUser(PermissionName:"Admin|Guide|Client"))
+                                    {
+                                        <li><a href="/Personal"><span class="fa fa-user-circle"></span> My Personal</a></li>
+                                    }
                                     <li class="more">
                                         <ul>
                                             <li><a href=""><span class="icon-cogs"></span></a></li>
@@ -163,7 +165,7 @@
     <div class="gototop js-top">
         <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
     </div>
-    @Scripts.Render("~/bundles/plugin");
+    @Scripts.Render("~/bundles/plugin")
     @RenderSection("my_script", required: false)
     @Scripts.Render("~/bundles/jquery")
     @*<script src="/Assets/js/scripts.min.js"></script>

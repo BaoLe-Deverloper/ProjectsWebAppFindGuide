@@ -12,10 +12,12 @@ namespace WebAspFindGuide.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Account()
         {
+            Account_Lauguages = new HashSet<Account_Lauguages>();
             BankCards = new HashSet<BankCard>();
+            Messages = new HashSet<Message>();
+            Messages1 = new HashSet<Message>();
             OrderTours = new HashSet<OrderTour>();
             OrderTours1 = new HashSet<OrderTour>();
-            Languages = new HashSet<Language>();
         }
 
         [StringLength(50)]
@@ -74,18 +76,24 @@ namespace WebAspFindGuide.Models
 
         public virtual Area Area { get; set; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Account_Lauguages> Account_Lauguages { get; set; }
+
         public virtual Role Role { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BankCard> BankCards { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Message> Messages { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Message> Messages1 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderTour> OrderTours { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderTour> OrderTours1 { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Language> Languages { get; set; }
     }
 }

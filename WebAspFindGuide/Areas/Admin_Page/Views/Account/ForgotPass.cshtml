@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "ForgotPass";
+    Layout = "~/Areas/Admin_Page/Views/Shared/_layoutAccount.cshtml";
+}
+
+@section jsAccount{
+    <script>
+        var input = $('.validate-input .input100');
+
+        $('.validate-form').on('submit', function () {
+            var check = true;
+
+            for (var i = 0; i < input.length; i++) {
+                if (validate(input[i]) == false) {
+                    showValidate(input[i]);
+                    check = false;
+                }
+            }
+            if ($("#InputnewPassword").val().trim() != $("#confirmnewPassword").val().trim()) {
+                $("#confirmnewPassword").parent().addClass('alert-validate');
+                check = false;
+            }
+            return check;
+            return check;
+        });
+
+
+        $('.validate-form .input100').each(function () {
+            $(this).focus(function () {
+                hideValidate(this);
+            });
+        });
+
+        function validate(input) {
+            if ($(input).val().trim() == '') {
+                return false;
+            }
+            else {
+                if ($(input).attr('name') == 'newPass') {
+                    if ($(input).val().trim().match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/) == null) {
+                        return false;
+                    }
+                }
+            }
+
+        }
+
+        function showValidate(input) {
+            var thisAlert = $(input).parent();
+
+            $(thisAlert).addClass('alert-validate');
+        }
+
+        function hideValidate(input) {
+            var thisAlert = $(input).parent();
+
+            $(thisAlert).removeClass('alert-validate');
+        }
+
+
+    </script>
+}
+
+<div class="panel panel-info">
+    <div class="panel-heading"><h3 class="text-center">Create a new Password</h3></div>
+    <div class="panel-body">
+        <form class="validate-form" action=@Url.Action("ForgotPass") method="post">
+            @Html.AntiForgeryToken()
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-warning text-center">
+                    @ViewBag.Error
+                </div>
+            }
+            @{
+                if (Session["SessionAdmin"] == null)
+                {
+                    <div class="form-group validate-input" data-validate="Enter Email">
+                        <label for="InputEmail">Email address</label>
+                        <input class="form-control input100" id="InputEmail" type="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                }
+                else
+                {
+                    var user = (WebAspFindGuide.Areas.Admin_Page.Models.Objects.Admin_Account)Session["SessionAdmin"];
+                    var avata = String.IsNullOrEmpty(user.Account_Avarta) ? "Avatar_user.png" : user.Account_Avarta;
+                    <div class="form-group text-center" >
+                        <img style="width:100px;height:100px;" src="~/Assets/img/@avata" class="img-circle avatar_user" alt="user name">
+                        <br />
+                        <strong><h3>@user.Account_Name</h3></strong>
+                    </div>
+                }
+            }
+            <div class="form-group validate-input" data-validate="Enter Old password">
+                <label for="Inputoldpass"> Old password</label>
+                <input class="form-control input100" id="Inputoldpass" type="password" name="oldPass" placeholder="Enter Old Password">
+            </div>
+            <div class="form-group validate-input" data-validate="Minimum 8 characters,letter,number.Ex:pass1234">
+                <label for="InputnewPassword">New Password</label>
+                <input class="form-control input100" id="InputnewPassword" type="password" name="newPass" placeholder="Password">
+            </div>
+            <div class="form-group validate-input" data-validate="Enter new password">
+                <label for="confirmnewPassword">Confirm new Password</label>
+                <input class="form-control input100" id="confirmnewPassword" type="password" placeholder="Confirm new Password">
+            </div>
+            <button class="btn btn-primary btn-block" type="submit">UpDate</button>
+        </form>
+        <div class="panel-footer">
+            <div class="text-center form-group">
+                <a class="d-block small mt-3" href=@Url.Action("Login")>Login an Account</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

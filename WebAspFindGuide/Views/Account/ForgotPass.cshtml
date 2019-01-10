@@ -1,12 +1,13 @@
-﻿@{
-    ViewBag.Title = "SignUp";
+﻿
+@{
+    ViewBag.Title = "ForgotPass";
     Layout = "~/Views/Shared/_LayoutAccount.cshtml";
 }
 
-<form class="login100-form validate-form" action="SignUp" method="post">
+<form class="login100-form validate-form" action="ForgotPass" method="post">
     @Html.AntiForgeryToken()
     <span class="login100-form-title p-b-26">
-        Sign Up
+        Create a new Password
     </span>
 
     @if (ViewBag.Error != null)
@@ -15,45 +16,59 @@
             @ViewBag.Error
         </div>
     }
-    <div class="wrap-input100 validate-input" data-validate="Enter Your Name">
-        <input class="input100" type="text" id="name" name="name">
-        <span class="focus-input100" data-placeholder="Name"></span>
-    </div>
-    <div class="wrap-input100 valiate-input">
-        <input class="" id="phone" type="tel" name="" placeholder="Enter Phone Number">
+    @{
+        if (Session["Account"] == null)
+        {
+            <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
+                <input class="input100" type="email" name="email">
+                <span class="focus-input100" data-placeholder="Email"></span>
+            </div>
+        }
+        else
+        {
+            var user = (WebAspFindGuide.Models.Site_Model.CustomAccount)Session["Account"];
+            var avata = String.IsNullOrEmpty(user.Account_Avarta) ? "Avatar_user.png" : user.Account_Avarta;
+            <div class="form-group text-center">
+                <img style="width:100px;height:100px;" src="~/Assets/img/@avata" class="img-circle avatar_user" alt="user name">
+                <br />
+                <h3><strong>@user.Account_Name</strong></h3>
+            </div>
+        }
+    }
 
+    <div class="wrap-input100 validate-input" data-validate="Enter old Password ">
+        <span class="btn-show-pass">
+            <i class="fas fa-eye-slash"></i>
+        </span>
+        <input class="input100" type="password" name="oldpass" id="myoldPass">
+        <span class="focus-input100" data-placeholder="Old Password"></span>
     </div>
-    <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
-        <input class="input100" type="email" name="email">
-        <span class="focus-input100" data-placeholder="Email"></span>
+    <div class="form-group">
+        <input class="mycheckbox" type="checkbox" name="remember" /> I don't remember the password
     </div>
-
     <div class="wrap-input100 validate-input" data-validate="Minimum 8 characters,letter,number .Ex:pass1234">
         <span class="btn-show-pass">
             <i class="fas fa-eye-slash"></i>
         </span>
-        <input class="input100 myPass" type="password" name="pass" id="myPass">
-        <span class="focus-input100" data-placeholder="Password"></span>
+        <input class="input100 myPass" type="password" name="newpass" id="myPass">
+        <span class="focus-input100" data-placeholder="new Password"></span>
     </div>
     <div class="">
         <div class="pwstrength_viewport_progress"></div>
     </div>
-    <div class="wrap-input100 validate-input" data-validate="Enter Confirm password">
+    <div class="wrap-input100 validate-input" data-validate="Enter Confirm new password">
         <span class="btn-show-pass">
             <i class="fas fa-eye-slash"></i>
         </span>
         <input class="input100" type="password" id="passconfig" name="passconfig">
-        <span class="focus-input100" data-placeholder="Confirm Password"></span>
-    </div>
-    <div class="text-center">
-        <div class="g-recaptcha" data-sitekey="6LcSVIcUAAAAAAmTd8956UjMxCDncUrYmJ_mQkUu"></div>
+        <span class="focus-input100" data-placeholder="Confirm new Password"></span>
     </div>
 
     <div class="container-login100-form-btn p-b-26">
         <div class="wrap-login100-form-btn">
             <div class="login100-form-bgbtn"></div>
             <button class="login100-form-btn" type="submit">
-                SignUp
+                Update
             </button>
         </div>
     </div>
@@ -75,12 +90,8 @@
     </div>
 </form>
 @section jsAccount{
-    <script src="/Assets/js/plugins/pwstrength-bootstrap.min.js"></script>
     <script src="/Assets/js/intlTelInput-jquery.js"></script>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script>
-
-    </script>
+    <script src="~/Assets/js/plugins/pwstrength-bootstrap.min.js"></script>
     <script>
 
         $(document).ready(function () {
@@ -102,21 +113,7 @@
         });
 
     </script>
-    <script>
-        $("#phone").intlTelInput({
-            separateDialCode: true,
-            initialCountry: "auto",
-            hiddenInput: "phone",
-            geoIpLookup: function (callback) {
-                jQuery.get('https://ipinfo.io', function () { }, "jsonp").always(function (resp) {
-                    var countryCode = (resp && resp.country) ? resp.country : "";
-                    callback(countryCode);
-                });
-            },
-            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.5/js/utils.js"
-        });
 
-    </script>
 
     <!--===============================================================================================-->
     <script>
@@ -165,22 +162,34 @@
                 $(this).focus(function () {
                     hideValidate(this);
                 });
+                $(this).val("");
             });
+            $(".mycheckbox").change(function () {
+                if ($(this).is(':checked')) {
+                    $("#myoldPass").attr('disabled', 'disabled');
+                    $("#myoldPass").parent().removeClass('alert-validate');
+                }
+                else {
+                    $("#myoldPass").removeAttr('disabled');
+                }
 
+            })
             function validate(input) {
+                if ($(".mycheckbox").is(':checked') && $(input).attr('name') == "oldpass") {
+
+                    return true;
+                }
 
                 if ($(input).val().trim() == '') {
                     return false;
                 }
                 else {
-                    if ($(input).attr('name') == 'pass') {
+                    if ($(input).attr('name') == 'newpass') {
                         if ($(input).val().trim().match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/) == null) {
                             return false;
                         }
                     }
                 }
-
-
             }
 
             function showValidate(input) {

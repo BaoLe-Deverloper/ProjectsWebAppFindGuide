@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "UnLockAccount";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+}
+
+<form class="login100-form validate-form" action="UnLockAccount" method="post">
+    @Html.AntiForgeryToken()
+    <span class="login100-form-title p-b-26">
+        UnLock your Account
+    </span>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-warning text-center">
+            @ViewBag.Error
+        </div>
+    }
+
+
+    <div class="wrap-input100 validate-input" data-validate="Enter your email">
+        <input class="input100" type="email" name="email">
+        <span class="focus-input100" data-placeholder="Your Email "></span>
+    </div>
+
+    <div class="container-login100-form-btn p-b-26">
+        <div class="wrap-login100-form-btn">
+            <div class="login100-form-bgbtn"></div>
+            <button class="login100-form-btn" type="submit">
+               Unlock
+            </button>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <span class="txt1">
+            Don’t have an account?
+        </span>
+
+        <a class="txt2" href="/Account/LogIn">
+            Log In
+        </a>
+    </div>
+</form>
+
+@section jsAccount{
+<script>
+      $('.validate-form').on('submit', function () {
+          if ($(".input100").val() == "") {
+              $(".input100").parent().addClass('alert-validate');
+              return false;
+          }
+    });
+    $('.validate-form .input100').each(function () {
+        $(this).focus(function () {
+            $(this).parent().removeClass('alert-validate');
+        });
+        $(this).val("");
+    });
+    </script>
+}

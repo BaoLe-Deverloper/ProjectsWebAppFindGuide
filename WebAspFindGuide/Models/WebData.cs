@@ -13,11 +13,13 @@ namespace WebAspFindGuide.Models
         }
 
         public virtual DbSet<Account> Accounts { get; set; }
+        public virtual DbSet<Account_Lauguages> Account_Lauguages { get; set; }
         public virtual DbSet<Area> Areas { get; set; }
         public virtual DbSet<BankCard> BankCards { get; set; }
         public virtual DbSet<Bank> Banks { get; set; }
         public virtual DbSet<Billing_App> Billing_App { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<OrderTour> OrderTours { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Sale> Sales { get; set; }
@@ -54,9 +56,26 @@ namespace WebAspFindGuide.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Account>()
+                .HasMany(e => e.Account_Lauguages)
+                .WithRequired(e => e.Account)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Account>()
                 .HasMany(e => e.BankCards)
                 .WithOptional(e => e.Account)
                 .HasForeignKey(e => e.BankCard_AccountID);
+
+            modelBuilder.Entity<Account>()
+                .HasMany(e => e.Messages)
+                .WithRequired(e => e.Account)
+                .HasForeignKey(e => e.Message_AccountID_From)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Account>()
+                .HasMany(e => e.Messages1)
+                .WithRequired(e => e.Account1)
+                .HasForeignKey(e => e.Message_AccountID_To)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Account>()
                 .HasMany(e => e.OrderTours)
@@ -68,10 +87,9 @@ namespace WebAspFindGuide.Models
                 .WithOptional(e => e.Account1)
                 .HasForeignKey(e => e.OrderTour_Tourists_ID);
 
-            modelBuilder.Entity<Account>()
-                .HasMany(e => e.Languages)
-                .WithMany(e => e.Accounts)
-                .Map(m => m.ToTable("Account_Lauguages").MapLeftKey("AccountID").MapRightKey("LanguageID"));
+            modelBuilder.Entity<Account_Lauguages>()
+                .Property(e => e.AccountID)
+                .IsUnicode(false);
 
             modelBuilder.Entity<Area>()
                 .HasMany(e => e.Accounts)
@@ -126,6 +144,23 @@ namespace WebAspFindGuide.Models
 
             modelBuilder.Entity<Language>()
                 .Property(e => e.LanguageKey)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Language>()
+                .HasMany(e => e.Account_Lauguages)
+                .WithRequired(e => e.Language)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Message>()
+                .Property(e => e.Message_AccountID_From)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Message>()
+                .Property(e => e.Message_AccountID_To)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Message>()
+                .Property(e => e.Message_Content)
                 .IsUnicode(false);
 
             modelBuilder.Entity<OrderTour>()

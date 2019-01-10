@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Trang Admin</title>
+    @Styles.Render("~/admin/css")
+    <link href="~/Assets/Admin/css/AccountPage.css" rel="stylesheet" />
+</head>
+<body class="bg-dark">
+    <div class="container">
+        <div class="login">
+         @RenderBody()
+        </div>
+        <script src="~/Assets/Admin/js/jquery-2.1.1.js"></script>
+        @RenderSection("jsAccount", required:false )
+        
+</body>
+
+</html>
+
+

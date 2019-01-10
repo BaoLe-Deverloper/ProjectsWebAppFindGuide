@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace WebAspFindGuide.Common
@@ -12,19 +13,19 @@ namespace WebAspFindGuide.Common
     {
         private static Code instance;
         public static Code Instance
-         {
-            get{ if (instance == null) return new Code(); else return instance; }
-            set{ instance = value; }
-          }
+        {
+            get { if (instance == null) return new Code(); else return instance; }
+            set { instance = value; }
+        }
         public string generateID()
         {
             string number = String.Format("{0:d9}", (DateTime.Now.Ticks / 10) % 1000000000) + DateTime.Now.Millisecond.ToString() + DateTime.Now.Second.ToString();
 
             return number;
         }
-        public void SendEmail(string email, string subject,string body)
+        public async Task<bool> SendEmail(string email, string subject, string body)
         {
-            var fromEmail = new MailAddress(ConfigurationManager.AppSettings["WebEmail"], "Activation Account - WebAppFindeGuide");
+            var fromEmail = new MailAddress(ConfigurationManager.AppSettings["WebEmail"], "WebAppFindeGuide");
             var toEmail = new MailAddress(email);
 
             var fromEmailPassword = ConfigurationManager.AppSettings["PassEmail"];
@@ -46,8 +47,16 @@ namespace WebAspFindGuide.Common
                 IsBodyHtml = true
 
             })
+                try
+                {
+                    await smtp.SendMailAsync(message);
+                    return true;
+                }
+                catch (Exception)
+                {
 
-                smtp.Send(message);
+                    return false;
+                }
 
         }
     }
